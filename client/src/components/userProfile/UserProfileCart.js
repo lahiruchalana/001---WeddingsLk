@@ -10,6 +10,8 @@ import PaypalButton from './PaypalButton'
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 const UserProfileCart = (props) => {
 
@@ -17,15 +19,10 @@ const UserProfileCart = (props) => {
     const [cart, setCart] = state.userAPI.cart
 
 
-
-
-
 /////////// If i use setUser and setName there should use another code ////////////////////
     const [user] = state.userAPI.user
     const [name] = state.userAPI.name
 /////////// If i use setUser and setName there should use another code ////////////////////
-
-
 
 
     const [token] = state.token
@@ -41,6 +38,10 @@ const UserProfileCart = (props) => {
 
             setTotal(total)
         }
+
+
+        Aos.init({ duration: 2500 });
+
 
         getTotal()
 
@@ -86,9 +87,10 @@ const UserProfileCart = (props) => {
 
             
             <Content>
-            <TextTitle>{user.name}'s Cart of Vendor Services</TextTitle>
+            <TextTitle data-aos="fade-right">{user.name}'s Cart of Vendor Services</TextTitle>
 
-            
+            <br></br>
+            <br></br>
             <div>
 
 
@@ -96,8 +98,8 @@ const UserProfileCart = (props) => {
             
             {
                 cart.map(product => (
-                    <div className="detail cart" key={product._id}>
-                    <img src={product.images.url} alt="" />
+                    <div data-aos="fade-right" className="detail cart" key={product._id}>
+                    <img data-aos="fade-right" src={product.images.url} alt="" />
                     
                     <div className="box-detail">
                     <h2>{product.title}</h2>
@@ -138,7 +140,7 @@ const UserProfileCart = (props) => {
                             
                             <div className="delete" 
                             onClick={() => removeProduct(product._id)}>
-                                <Button variant="contained" color="secondary">
+                                <Button data-aos="fade-right" variant="contained" color="secondary">
                                 Remove Vendor
                                 </Button>
                             </div>
@@ -148,11 +150,11 @@ const UserProfileCart = (props) => {
 
                             <div className="row_btn">
 
-                                <Link to="/confirmed_vendors" className="cart"
+                                <Link data-aos="fade-right" to="/confirmed_vendors" className="cart"
                                 onClick={() => addConfirmedVendors(product)}>
                                     Confirmed Vendor
                                 </Link>
-                                <Link to="/wish_to_buy" className="cart"
+                                <Link data-aos="fade-right" to="/wish_to_buy" className="cart"
                                 onClick={() => addWishToBuy(product)}>
                                     Wish To Buy
                                 </Link>

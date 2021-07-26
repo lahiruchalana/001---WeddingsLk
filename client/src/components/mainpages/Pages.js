@@ -37,6 +37,7 @@ import CurrentEmployees from '../adminProfile/CurrentEmployees'
 import CompletedWeddings from '../adminProfile/CompletedWeddings'
 import ProgressInWeddings from '../adminProfile/ProgressInWeddings'
 import NotAssignedWeddings from '../adminProfile/NotAssignedWeddings'
+import YourInfo from '../userProfile/YourInfo.js'
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -85,6 +86,7 @@ function Pages() {
 
             <Route path="/user_profile" exact component={isLogged ? UserProfile : NotFound} />
             <Route path="/budget_report" exact component={isLogged ? Example : NotFound} />
+            <Route path="/your_info" exact component={isLogged ? YourInfo : NotFound} />
 
             <Route path="/employee_profile" exact component={isEmployee ? EmployeeProfile : NotFound} />
 

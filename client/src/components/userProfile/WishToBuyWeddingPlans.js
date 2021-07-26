@@ -9,6 +9,9 @@ import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
 import {Link} from 'react-router-dom'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 function ConfirmedWeddingPlans() {
     const state = useContext(GlobalState)
@@ -18,6 +21,10 @@ function ConfirmedWeddingPlans() {
     const [total, setTotal] = useState(0)
     const addConfirmedWeddingPlans = state.userAPI.addConfirmedWeddingPlans
 
+
+    useEffect(() =>{
+        Aos.init({ duration: 2500 });
+    },[])
 
     //////////////////get total of prices of [cart] //////////////////
     // useEffect(() =>{
@@ -97,7 +104,7 @@ function ConfirmedWeddingPlans() {
             <br></br>
             <br></br>
             <br></br>
-        <h2 style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Wedding Plans in the Wish List</h2>
+        <h2  data-aos="fade-left"  style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Wedding Plans in the Wish List</h2>
         </Content>);
 
     return (
@@ -110,21 +117,21 @@ function ConfirmedWeddingPlans() {
             <br></br>
             <br></br>
             <br></br>
-            <TextTitle>Your Wish List of Wedding Plans</TextTitle>
+            <TextTitle data-aos="fade-left" >Your Wish List of Wedding Plans</TextTitle>
             <br></br>
             {
                 wish_to_buy_wedding_plans.map(weddingPlan => (
-                    <div key={weddingPlan._id}>
+                    <div data-aos="fade-left"  key={weddingPlan._id}>
                         <Product_card>
 
-                            <h2 title={weddingPlan.title}>{weddingPlan.title}</h2>
+                            <h2 data-aos="fade-left"  title={weddingPlan.title}>{weddingPlan.title}</h2>
             
-                            <img src={weddingPlan.images_1.url} alt="" />
+                            <img data-aos="fade-left" src={weddingPlan.images_1.url} alt="" />
 
                             
 
                             <Box>
-                                <Product_box>
+                                <Product_box data-aos="fade-left" >
                                     <h2 title={weddingPlan.vendor_1}>{weddingPlan.vendor_1}</h2>
                                     <h5>Service: {weddingPlan.category_1}</h5>
                                     <span>Rs {weddingPlan.price_1} - Rs {weddingPlan.max_price_1}</span>
@@ -132,7 +139,7 @@ function ConfirmedWeddingPlans() {
                                     {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                                     <h5>Address: {weddingPlan.address_1}</h5>
                                 </Product_box>
-                                <Product_box>
+                                <Product_box data-aos="fade-left" >
                                     <h2 title={weddingPlan.vendor_2}>{weddingPlan.vendor_2}</h2>
                                     <h5>Service: {weddingPlan.category_2}</h5>
                                     <span>Rs {weddingPlan.price_2} - Rs {weddingPlan.max_price_2}</span>
@@ -141,7 +148,7 @@ function ConfirmedWeddingPlans() {
                                     <h5>Address: {weddingPlan.address_2}</h5>
                                 </Product_box>
                                 { weddingPlan.vendor_3 == '' ? '' :
-                                    <Product_box>
+                                    <Product_box data-aos="fade-left" >
                                         <h2 title={weddingPlan.vendor_3}>{weddingPlan.vendor_3}</h2>
                                         <h5>Service: {weddingPlan.category_3}</h5>
                                         <span>Rs {weddingPlan.price_3} - Rs {weddingPlan.max_price_3}</span>

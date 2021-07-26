@@ -2,19 +2,10 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function UserAPI(token) {
-
-
-
-
 /////////// If i use setUser and setName there should use another code ////////////////////
     const [name, setName] = useState([])
     const [user, setUser] = useState([])
 /////////// If i use setUser and setName there should use another code ////////////////////
-
-
-
-
-
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isEmployee, setIsEmployee] = useState(false)
@@ -35,31 +26,21 @@ function UserAPI(token) {
                     const res = await axios.get('/user/infor', {
                         headers: {Authorization: token}
                     })
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
                     setUser(res.data)
                     setName(res.data.name)
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-
-
-
-
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                     res.data.role === 2 ? setIsEmployee(true) : setIsEmployee(false)
-
                     
                     setCart(res.data.cart)
                     setConfirmedVendors(res.data.confirmed_vendors)
                     setWishToBuy(res.data.wish_to_buy)
                     setConfirmedWeddingPlans(res.data.confirmed_wedding_plans)
                     setWishToBuyWeddingPlans(res.data.wish_to_buy_wedding_plans)
-
                 } catch (err) {
                     alert(err.response.data.msg)
                 }

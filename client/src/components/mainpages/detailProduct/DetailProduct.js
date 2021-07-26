@@ -6,6 +6,8 @@ import ProductItem from '../utils/productItem/ProductItem'
 import Header from '../../header/Header'
 import Footer from '../../footer/Footer'
 
+import Aos from "aos";
+import 'aos/dist/aos.css'; 
 
 function DetailProduct() {
     const params = useParams()
@@ -23,6 +25,10 @@ function DetailProduct() {
                 if(product._id === params.id) setDetailProduct(product)
             })
         }
+
+        Aos.init({ duration: 2500 });
+
+
     },[params.id, products])
 
     if(detailProduct.length === 0) return null;
@@ -33,10 +39,10 @@ function DetailProduct() {
         <br></br>
         <br></br>
         <br></br>
-            <div className="detail">
+            <div data-aos="fade-left" className="detail">
                 <div className="box-detail">
                     <div >
-                        <img src={detailProduct.images.url} alt="" />
+                        <img data-aos="fade-left" src={detailProduct.images.url} alt="" />
                         <Line4></Line4>
                         <Text3>{detailProduct.content_5}</Text3>
                     </div>
@@ -72,17 +78,17 @@ function DetailProduct() {
                     <Text4>{detailProduct.address_line_2}</Text4>
                     <Text4>{detailProduct.address_line_3}</Text4>
                     <LineLite1></LineLite1>
-                    <Link to="/cart" className="cart"
+                    <Link data-aos="fade-left" to="/cart" className="cart"
                     onClick={() => addCart(detailProduct)}>
                         Add to Cart Now
                     </Link>
                     <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
-                    <Link to="/confirmed_vendors" className="cart"
+                    <Link data-aos="fade-left" to="/confirmed_vendors" className="cart"
                     onClick={() => addConfirmedVendors(detailProduct)}>
                         Confirm Vendor
                     </Link>
                     <Text8>Give More Priority to This Vendor, Adding This Vendor to Wish to Buy List, Just Click on Wish to Buy</Text8>
-                    <Link to="/wish_to_buy" className="cart"
+                    <Link data-aos="fade-left" to="/wish_to_buy" className="cart"
                     onClick={() => addWishToBuy(detailProduct)}>
                         Wish To Buy
                     </Link>
@@ -90,7 +96,7 @@ function DetailProduct() {
                     <br></br>
                     <br></br>
                     <LineLite1></LineLite1>
-                    <Text1>Other Services: {detailProduct.other_services}</Text1>
+                    <Text1 >Other Services: {detailProduct.other_services}</Text1>
                     <LineLite1></LineLite1>
                 </div>
             </div>

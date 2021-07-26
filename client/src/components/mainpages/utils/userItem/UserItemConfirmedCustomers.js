@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 // import BtnRender from './BtnRender'
 // import Button from '@material-ui/core/Button';
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {GlobalState} from '../../../../GlobalState'
 import axios from 'axios'
 import { Button } from '@material-ui/core';
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
 
@@ -22,6 +24,10 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
     // const [onEdit, setOnEdit] = useState(false)
     // const [id, setID] = useState('')
     // const [id] = useState('')
+
+    useEffect(() =>{
+        Aos.init({ duration: 2500 });
+    },[])
 
     const updateUsers = async e =>{
         e.preventDefault()
@@ -102,10 +108,10 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
             { user.role == 1 || user.role == 2 ? '' : 
                 user.confirmed_vendors.length && user.confirmed_wedding_plans.length === 0 ? null 
                     : 
-                <Product_card>
+                <Product_card data-aos="fade-left">
             
-                    <div className="product_box">
-                        <TextName name={user.name}>{user.name}</TextName>
+                    <div data-aos="fade-left" className="product_box">
+                        <TextName data-aos="fade-left" name={user.name}>{user.name}</TextName>
                         {/* ///////////// add here phone number for role (role -> phone number)/////////// */}
                         <h5>{user.email}</h5>
                         <h5>0{user.contactFirst}</h5>
@@ -119,8 +125,8 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                         <div>{user.confirmed_vendors.map(confirmed_vendors => {
                             return( 
                             <>
-                                <div>
-                                    <Text1>{confirmed_vendors.title}</Text1>
+                                <div data-aos="fade-left">
+                                    <Text1 data-aos="fade-left">{confirmed_vendors.title}</Text1>
                                     <Text2>{confirmed_vendors.address_line_1}</Text2>
                                     <Text3>Rs: {confirmed_vendors.price} - {confirmed_vendors.max_price}</Text3>
                                     { user.progress == '0' ? 
@@ -293,13 +299,13 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                 }
                             </>
                         )})}</div>
-                        <Line1></Line1>
+                        <Line1 data-aos="fade-left"></Line1>
                         <br></br>
-                        <Text5>Current Employee - {user.emp_name}</Text5>
+                        <Text5 data-aos="fade-left">Current Employee - {user.emp_name}</Text5>
                         <br></br>
-                        <Text5>Contact Number of Employee - 0{user.emp_contact}</Text5>
+                        <Text5 data-aos="fade-left">Contact Number of Employee - 0{user.emp_contact}</Text5>
                         <br></br>
-                        <Line1></Line1>
+                        <Line1 data-aos="fade-left"></Line1>
                         <br></br>
                         <Form>
                             <form onSubmit={updateUsers}>
@@ -335,7 +341,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                         <br></br>
                         <Line1></Line1>
                         <br></br>
-                        <Text6>Current States of the Wedding</Text6>
+                        <Text6 data-aos="fade-left">Current States of the Wedding</Text6>
                         <br></br>
                         { user.progress == '0' ? 
                             <ButtonBox>
@@ -375,7 +381,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                         <br></br>
                         <Line1></Line1>
                         <br></br>
-                        <Text6>Update the States of the Wedding</Text6>
+                        <Text6 data-aos="fade-left">Update the States of the Wedding</Text6>
                         <br></br>
                         <Progress>
                             <div>

@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components';
 // import BtnRender from './BtnRender'
 import Button from '@material-ui/core/Button';
-
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
+
+    useEffect(() =>{
+        Aos.init({ duration: 2500 });
+    },[])
 
     return (
         <Product_card>
@@ -14,8 +19,8 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
             } */}
             {/* <img src={product.images.url} alt="" /> */}
 
-            <div className="product_box">
-                <h1 name={user.name}>{user.name}</h1>
+            <div data-aos="fade-left" className="product_box">
+                <h1 data-aos="fade-left" name={user.name}>{user.name}</h1>
                 
 
 

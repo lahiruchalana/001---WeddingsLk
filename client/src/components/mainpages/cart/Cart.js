@@ -9,6 +9,9 @@ import Footer from '../../footer/Footer';
 import SideBarUser from '../../userProfile/SideBarUser';
 import {Link} from 'react-router-dom'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 function Cart() {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.userAPI.cart
@@ -26,6 +29,10 @@ function Cart() {
 
             setTotal(total)
         }
+
+
+        Aos.init({ duration: 2500 });
+
 
         getTotal()
 
@@ -95,7 +102,7 @@ function Cart() {
             <br></br>
             <br></br>
             <br></br>
-        <h2 style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Cart</h2>
+        <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Cart</h2>
         </Content>);
  
 
@@ -108,11 +115,11 @@ function Cart() {
             <br></br>
             <br></br>
             <br></br>
-            <Text1>The Cart of Vendor Services</Text1>
+            <Text1 data-aos="fade-left">The Cart of Vendor Services</Text1>
             {
                 cart.map(product => (
-                    <div className="detail cart" key={product._id}>
-                    <img src={product.images.url} alt="" />
+                    <div data-aos="fade-left" className="detail cart" key={product._id}>
+                    <img data-aos="fade-left" src={product.images.url} alt="" />
                     
                     <div className="box-detail">
                     <h2>{product.title}</h2>

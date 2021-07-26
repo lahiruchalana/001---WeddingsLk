@@ -1,20 +1,26 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components';
 // import BtnRender from './BtnRender'
 import Button from '@material-ui/core/Button';
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 
 function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
 
+  useEffect(() =>{
+    Aos.init({ duration: 2500 });
+},[])
+
     return (
-        <div>
+        <div data-aos="fade-left">
             { user.role == 1 || user.role == 2 ? '' : 
                 user.wish_to_buy.length && user.wish_to_buy_wedding_plans.length === 0 ? null 
                   :
-                    <Product_card>
+                    <Product_card data-aos="fade-left">
                 
-                        <div className="product_box">
-                            <TextName name={user.name}>{user.name}</TextName>
+                        <div data-aos="fade-left" className="product_box">
+                            <TextName data-aos="fade-left" name={user.name}>{user.name}</TextName>
                             {/* ///////////// add here phone number for role (role -> phone number)/////////// */}
                             <h5>{user.email}</h5>
                             <h5>0{user.contactFirst}</h5>
@@ -27,7 +33,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                             <div>{user.wish_to_buy.map(wish_to_buy => {
                                 return( 
                                 <>
-                                    <div>
+                                    <div data-aos="fade-left">
                                         <Text1>{wish_to_buy.title}</Text1>
                                         <Text2>{wish_to_buy.address_line_1}</Text2>
                                         <Text3>Rs: {wish_to_buy.price} - {wish_to_buy.max_price}</Text3>

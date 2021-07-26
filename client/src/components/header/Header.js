@@ -137,9 +137,9 @@ const Header = () => {
     return (
         <Content>
             <Nav>
-                <HeaderLogo>
+                <HeaderLogo data-aos="fade-right">
                     <a href='/'>
-                        <img data-aos="fade up" src="../images/Logo.png" />
+                        <img data-aos="fade-right" data-aos="fade up" src="../images/Logo.png" />
                     </a>
                 </HeaderLogo>
                 <HeaderNav>
@@ -240,8 +240,8 @@ const Header = () => {
                 {
                 isAdmin || isEmployee ? '' 
                 :<li>
-                    <Link to="/user_profile">
-                        <AccountCircleIcon />
+                    <Link data-aos="fade-left" to="/your_info">
+                        <AccountCircleIcon color="white"/>
                     </Link>
                 </li>
                 }
@@ -253,7 +253,7 @@ const Header = () => {
 
                 {
                 isAdmin || isEmployee ? '' 
-                :<div className="cart-icon">
+                :<div data-aos="fade-left" className="cart-icon">
                     <span>{cart.length}</span>
                     <Link to="/cart">
                         <img src={Cart} alt="" width="30" />

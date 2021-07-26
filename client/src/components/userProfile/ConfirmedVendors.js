@@ -8,6 +8,10 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
+
 function ConfirmedVendors() {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.userAPI.cart
@@ -24,6 +28,9 @@ function ConfirmedVendors() {
 
             setTotal(total)
         }
+
+        Aos.init({ duration: 2500 });
+
 
         getTotal()
 
@@ -93,7 +100,7 @@ function ConfirmedVendors() {
             <br></br>
             <br></br>
             <br></br>
-        <h2 style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Confirmed Services of Vendors</h2>
+        <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Confirmed Services of Vendors</h2>
         </Content>);
 
     return (
@@ -106,14 +113,16 @@ function ConfirmedVendors() {
             <br></br>
             <br></br>
             <br></br>
-            <TextTitle>Your Confirmed Vendors</TextTitle>
+            <TextTitle data-aos="fade-right">Your Confirmed Vendors</TextTitle>
+            <br></br>
+            <br></br>
             {
                 confirmed_vendors.map(product => (
-                    <div className="detail cart" key={product._id}>
-                    <img src={product.images.url} alt="" />
+                    <div data-aos="fade-right" className="detail cart" key={product._id}>
+                    <img data-aos="fade-right" src={product.images.url} alt="" />
                     
                     <div className="box-detail">
-                    <h2>{product.title}</h2>
+                    <h2 data-aos="fade-right">{product.title}</h2>
                     <LineLite1></LineLite1>
                     <h4>Rs {product.price} - {product.max_price}</h4>
                     <LineLite1></LineLite1>

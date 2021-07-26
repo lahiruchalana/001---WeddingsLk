@@ -17,6 +17,9 @@ import {GlobalState} from '../../GlobalState'
 import { Button } from '@material-ui/core';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 const SideBarUser = (props) => {
 
@@ -26,73 +29,77 @@ const SideBarUser = (props) => {
     const [user] = state.userAPI.user
     // const [user, setUser] = state.userAPI.user
 
+    useEffect(() =>{
+        Aos.init({ duration: 2500 });
+    },[])
+
 
     return (
         <Container>
             <Content>
-            <ImageBg src="/images/HomeGallery2.jpg"
+            <ImageBg data-aos="fade-right" src="/images/HomeGallery2.jpg"
                     ></ImageBg>
                 <NavBar >
                     
                     {/* Use Id to assign the couple name here  */}
-                    <Logo>
+                    <Logo data-aos="fade-right">
                         <a href= '/'>
                             <img src= "../images/Logo.png"/> 
                         </a>
                     </Logo>
-                    <TxtCoupleNames>My Profile</TxtCoupleNames>
-                    <Row>
+                    <TxtCoupleNames data-aos="fade-right">My Profile</TxtCoupleNames>
+                    <Row data-aos="fade-right">
                         <a href="/">
                             <HomeIcon></HomeIcon>
-                            <BtnYourServices>Home</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Home</BtnYourServices>
+                        </a>
+                    </Row >
+                    <Row data-aos="fade-right">
+                        <a href="/your_info">
+                            <AccountBoxIcon></AccountBoxIcon>
+                            <BtnYourServices data-aos="fade-right">Your Info</BtnYourServices>
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/user_profile">
                         <ShoppingCartIcon></ShoppingCartIcon>
-                            <BtnYourServices>Your Cart</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Your Cart</BtnYourServices>
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/user_dashboard_wish_to_buy">
                             <AddShoppingCartIcon></AddShoppingCartIcon>
-                            <BtnYourServices>Wish To Buy</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Wish To Buy</BtnYourServices>
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/user_dashboard_confirmed_vendors">
                             <AssignmentTurnedInIcon></AssignmentTurnedInIcon>
-                            <BtnYourServices>Confirmed Vendors</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Confirmed Vendors</BtnYourServices>
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/confirmed_wedding_plans">
                             <CheckCircleTwoToneIcon></CheckCircleTwoToneIcon>
-                            <BtnYourServices>C Wedding Plans</BtnYourServices> 
+                            <BtnYourServices data-aos="fade-right">C Wedding Plans</BtnYourServices> 
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/wish_to_buy_wedding_plans">
                             <WeddingPlan></WeddingPlan>
-                            <BtnYourServices>WL Wedding Plans</BtnYourServices> 
+                            <BtnYourServices data-aos="fade-right">WL Wedding Plans</BtnYourServices> 
                         </a>
                     </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/budget_report">
                             <BugdetReport></BugdetReport>
-                            <BtnYourServices>Budget Report</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Budget Report</BtnYourServices>
                         </a>
                     </Row>
-                    <Row>
-                        <a href="/">
-                            <AccountBoxIcon></AccountBoxIcon>
-                            <BtnYourServices>Your Info</BtnYourServices>
-                        </a>
-                    </Row>
-                    <Row>
+                    <Row data-aos="fade-right">
                         <a href="/">
                             <CurrentVendors></CurrentVendors>
-                            <BtnYourServices>Current Vendors</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Current Vendors</BtnYourServices>
                         </a>
                     </Row>
                     {/* <Row>
@@ -101,10 +108,10 @@ const SideBarUser = (props) => {
                             <BtnMessanger>Messanger</BtnMessanger>
                         </a>
                     </Row> */}
-                    <RowLast>
+                    <RowLast data-aos="fade-right">
                         <a href="/">
                             <Settings></Settings>
-                            <BtnSettings>Settings</BtnSettings>
+                            <BtnSettings data-aos="fade-right">Settings</BtnSettings>
                         </a>
                     </RowLast>
                     
@@ -123,7 +130,7 @@ const SideBarUser = (props) => {
                     </Button>
                 </CommunityButton>
             }
-            { user.emp_name == '' ? <CommunityButton2>
+            { user.emp_name == null ? <CommunityButton2>
                     <Button style={{
                         // borderRadius: 35,
                         backgroundColor: "#b5e48c"
@@ -155,7 +162,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     position: fixed;
-    background-color: #250B0E;
+    background-color: #242021;
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
@@ -199,7 +206,7 @@ const Row = styled.div`
     a {
         display: flex;
         align-items: center;
-        font-size: 17px;
+        font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 600;
         text-decoration: none;
@@ -251,7 +258,7 @@ const RowLast = styled.div`
     a {
         display: flex;
         align-items: center;
-        font-size: 17px;
+        font-size: 14px;
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 600;
         text-decoration: none;
@@ -271,7 +278,7 @@ const CommunityButton = styled.div`
 const CommunityButton2 = styled.div`
     position: fixed;
     right: 0;
-    top: 140px;
+    top: 130px;
     z-index: 3;
     color: white;
 `;

@@ -9,6 +9,9 @@ import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
 import {Link} from 'react-router-dom'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 function WishToBuy() {
     const state = useContext(GlobalState)
@@ -29,6 +32,9 @@ function WishToBuy() {
 
             setTotal(total)
         }
+
+
+        Aos.init({ duration: 2500 });
 
         getTotal()
 
@@ -112,11 +118,13 @@ function WishToBuy() {
             <br></br>
             <br></br>
             <br></br>
-            <TextTitle>Your Vendors of Wish To Buy List</TextTitle>
+            <TextTitle data-aos="fade-left">Your Vendors of Wish To Buy List</TextTitle>
+            <br></br>
+            <br></br>
             {
                 wish_to_buy.map(product => (
-                    <div className="detail cart" key={product._id}>
-                    <img src={product.images.url} alt="" />
+                    <div data-aos="fade-left" className="detail cart" key={product._id}>
+                    <img  data-aos="fade-left" src={product.images.url} alt="" />
                     
                     <div className="box-detail">
                     <h2>{product.title}</h2>
@@ -165,7 +173,7 @@ function WishToBuy() {
 
                             <div className="row_btn">
 
-                                <Link to="/confirmed_vendors" className="cart"
+                                <Link data-aos="fade-left" to="/confirmed_vendors" className="cart"
                                 onClick={() => addConfirmedVendors(product)}>
                                     Confirmed Vendor
                                 </Link>

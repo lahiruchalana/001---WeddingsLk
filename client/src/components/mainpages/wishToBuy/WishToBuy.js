@@ -9,6 +9,8 @@ import Footer from '../../footer/Footer';
 import SideBarUser from '../../userProfile/SideBarUser';
 import {Link} from 'react-router-dom'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 function WishToBuy() {
     const state = useContext(GlobalState)
@@ -29,6 +31,10 @@ function WishToBuy() {
 
             setTotal(total)
         }
+
+
+        Aos.init({ duration: 2500 });
+
 
         getTotal()
 
@@ -98,7 +104,7 @@ function WishToBuy() {
             <br></br>
             <br></br>
             <br></br>
-        <h2 style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Wish to Buy</h2>
+        <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Wish to Buy</h2>
         </Content>);
  
 
@@ -111,11 +117,11 @@ function WishToBuy() {
             <br></br>
             <br></br>
             <br></br>
-            <Text1>Your Wish To Buy Vendor Services</Text1>
+            <Text1 data-aos="fade-left" >Your Wish To Buy Vendor Services</Text1>
             {
                 wish_to_buy.map(product => (
-                    <div className="detail cart" key={product._id}>
-                    <img src={product.images.url} alt="" />
+                    <div data-aos="fade-left" className="detail cart" key={product._id}>
+                    <img data-aos="fade-left" src={product.images.url} alt="" />
                     
                     <div className="box-detail">
                     <h2>{product.title}</h2>
@@ -156,7 +162,7 @@ function WishToBuy() {
                             
                             <div className="delete" 
                             onClick={() => removeWishToBuy(product._id)}>
-                                <Button variant="contained" color="secondary">
+                                <Button data-aos="fade-left" variant="contained" color="secondary">
                                 Remove Vendor
                                 </Button>
                             </div>
@@ -164,7 +170,7 @@ function WishToBuy() {
 
                             <div className="row_btn">
 
-                                <Link to="/confirmed_vendors" className="cart"
+                                <Link data-aos="fade-left" to="/confirmed_vendors" className="cart"
                                 onClick={() => addConfirmedVendors(product)}>
                                     Confirmed Vendor
                                 </Link>

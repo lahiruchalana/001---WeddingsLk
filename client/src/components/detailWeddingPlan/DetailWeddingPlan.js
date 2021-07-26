@@ -6,6 +6,9 @@ import WeddingPlanItem from '../utils/weddingPlanItem/WeddingPlanItem'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 
 function DetailProduct() {
     const params = useParams()
@@ -26,6 +29,11 @@ function DetailProduct() {
                 if(weddingPlan._id === params.id) setDetailWeddingPlan(weddingPlan)
             })
         }
+
+        
+        Aos.init({ duration: 2500 });
+        
+        
     },[params.id, weddingPlans])
 
     if(detailWeddingPlan.length === 0) return null;
@@ -37,9 +45,9 @@ function DetailProduct() {
         <br></br>
         <br></br>
             {/* <div className="detail"> */}
-                <Product_card>
+                <Product_card data-aos="fade-left">
                 
-                <img src={detailWeddingPlan.images_1.url} alt="" />
+                <img data-aos="fade-left" src={detailWeddingPlan.images_1.url} alt="" />
 
                 <h2 title={detailWeddingPlan.title}>{detailWeddingPlan.title}</h2>
 
@@ -60,14 +68,16 @@ function DetailProduct() {
                         {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                         <h5>Address: {detailWeddingPlan.address_2}</h5>
                     </Product_box>
-                    <Product_box>
-                        <h2 title={detailWeddingPlan.vendor_3}>{detailWeddingPlan.vendor_3}</h2>
-                        <h5>Service: {detailWeddingPlan.category_3}</h5>
-                        <span>Rs {detailWeddingPlan.price_3} - Rs {detailWeddingPlan.max_price_3}</span>
-                        <p>{detailWeddingPlan.description_3}</p>
-                        {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
-                        <h5>Address: {detailWeddingPlan.address_3}</h5>
-                    </Product_box>
+                    { detailWeddingPlan.vendor_3.title == null ? '' : 
+                        <Product_box>
+                            <h2 title={detailWeddingPlan.vendor_3}>{detailWeddingPlan.vendor_3}</h2>
+                            <h5>Service: {detailWeddingPlan.category_3}</h5>
+                            <span>Rs {detailWeddingPlan.price_3} - Rs {detailWeddingPlan.max_price_3}</span>
+                            <p>{detailWeddingPlan.description_3}</p>
+                            {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
+                            <h5>Address: {detailWeddingPlan.address_3}</h5>
+                        </Product_box>
+                    }
                 </Box>
 
                 <br/>

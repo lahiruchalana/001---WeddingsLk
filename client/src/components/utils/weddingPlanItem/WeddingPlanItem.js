@@ -1,17 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import BtnRender from './BtnRender'
 import styled from "styled-components";
+import Aos from "aos";
+import 'aos/dist/aos.css';
 
 
 function WeddingPlanItem({weddingPlan, isAdmin, deleteWeddingPlan, handleCheck}) {
 
+    useEffect(() =>{
+        Aos.init({ duration: 2500 });
+    },[])
+
     return (
-        <Product_card>
+        <Product_card data-aos="fade-left">
             {
                 isAdmin && <input type="checkbox" checked={weddingPlan.checked}
                 onChange={() => handleCheck(weddingPlan._id)} />
             }
-            <img src={weddingPlan.images_1.url} alt="" />
+            <img data-aos="fade-left" src={weddingPlan.images_1.url} alt="" />
 
             <h2 title={weddingPlan.title}>{weddingPlan.title}</h2>
 
