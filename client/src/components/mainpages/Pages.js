@@ -34,6 +34,9 @@ import CustomersWishList from '../adminProfile/CustomersWishList'
 import ConfirmedWeddingPlans from '../userProfile/ConfirmedWeddingPlans'
 import WishToBuyWeddingPlans from '../userProfile/WishToBuyWeddingPlans'
 import CurrentEmployees from '../adminProfile/CurrentEmployees'
+import CompletedWeddings from '../adminProfile/CompletedWeddings'
+import ProgressInWeddings from '../adminProfile/ProgressInWeddings'
+import NotAssignedWeddings from '../adminProfile/NotAssignedWeddings'
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -73,6 +76,9 @@ function Pages() {
             <Route path="/confirmed_customers" exact component={isAdmin ? ConfirmedCustomers : NotFound} />
             <Route path="/customers_wishlist" exact component={isAdmin ? CustomersWishList : NotFound} />
             <Route path="/current_emp" exact component={isAdmin ? CurrentEmployees : NotFound} />
+            <Route path="/completed_weddings" exact component={isAdmin ? CompletedWeddings : NotFound} />
+            <Route path="/progress_in_weddings" exact component={isAdmin ? ProgressInWeddings : NotFound} />
+            <Route path="/not_assigned_weddings" exact component={isAdmin ? NotAssignedWeddings : NotFound} />
 
             <Route path="/history" exact component={isLogged ? OrderHistory : NotFound} />
             <Route path="/history/:id" exact component={isLogged ? OrderDetails : NotFound} />

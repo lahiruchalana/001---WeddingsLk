@@ -2,7 +2,7 @@ import styled from "styled-components";
 import SideBarAdmin from "./SideBarAdmin";
 import Header from "../header/Header";
 
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../GlobalState'
 import UserItemConfirmedCustomers from '../mainpages/utils/userItem/UserItemConfirmedCustomers'
 import Loading from '../mainpages/utils/loading/Loading'
@@ -23,6 +23,8 @@ function AdminProfile() {
     const [callback, setCallback] = state.userInfoAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
+    const [total, setTotal] = useState(0)
+
 
     const handleCheck = (id) =>{
         users.forEach(user => {
@@ -30,6 +32,19 @@ function AdminProfile() {
         })
         setUsers([...users])
     }
+
+    useEffect(() =>{
+        const getTotal = () =>{
+            const total = users.reduce((prev, user) => {
+                return  user.confirmed_vendors && user.confirmed_wedding_plans == '' ? prev + 0 : prev + 1
+            },0)
+
+            setTotal(total)
+        }
+
+        getTotal()
+
+    },[users])
 
     // const deleteProduct = async(id, public_id) => {
     //     try {
@@ -93,11 +108,13 @@ function AdminProfile() {
         } */}
 
         <Text4>Confirmed Customers</Text4>
+        <Text4>{total}</Text4>
+
 
         <Products>
             {
                 users.map(user => {
-                    return <UserItemConfirmedCustomers key={user._id} user={user} />
+                    return user.confirmed_vendors && user.confirmed_wedding_plans == '' ? null : <UserItemConfirmedCustomers key={user._id} user={user} />
                     // isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
                 })
             } 

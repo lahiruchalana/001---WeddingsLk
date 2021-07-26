@@ -2,9 +2,9 @@ import styled from "styled-components";
 import SideBarAdmin from "./SideBarAdmin";
 import Header from "../header/Header";
 
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../GlobalState'
-import UserItemCustomerWishList from '../mainpages/utils/userItem/UserItemCustomerWishList'
+import UserItemConfirmedCustomers from '../mainpages/utils/userItem/UserItemConfirmedCustomers'
 import Loading from '../mainpages/utils/loading/Loading'
 import axios from 'axios'
 import Filters from './Filters'
@@ -23,6 +23,8 @@ function AdminProfile() {
     const [callback, setCallback] = state.userInfoAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
+    const [total, setTotal] = useState(0)
+
 
     const handleCheck = (id) =>{
         users.forEach(user => {
@@ -30,6 +32,19 @@ function AdminProfile() {
         })
         setUsers([...users])
     }
+
+    useEffect(() =>{
+        const getTotal = () =>{
+            const total = users.reduce((prev, user) => {
+                return  user.progress == '0' ? prev + 1 : prev + 0
+            },0)
+
+            setTotal(total)
+        }
+
+        getTotal()
+
+    },[users])
 
     // const deleteProduct = async(id, public_id) => {
     //     try {
@@ -92,12 +107,15 @@ function AdminProfile() {
             </div>
         } */}
 
-        <Text4>Customer's WishList</Text4>
+        <Text4>Weddings to be Assigned Employees</Text4>
+        <Text4>{total}</Text4>
+
 
         <Products>
             {
                 users.map(user => {
-                    return user.wish_to_buy && user.wish_to_buy_wedding_plans == '' ? null : <UserItemCustomerWishList key={user._id} user={user} />
+                    return user.progress == '0' ? <UserItemConfirmedCustomers key={user._id} user={user} />
+                     : null
                     // isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
                 })
             } 

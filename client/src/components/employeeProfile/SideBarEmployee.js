@@ -44,15 +44,27 @@ const SideBarEmployee = (props) => {
                     <Row>
                         <a href="/">
                             <PlaylistAddIcon></PlaylistAddIcon>
-                            <BtnCurrentVendors>Tasks Management</BtnCurrentVendors>
+                            <BtnCurrentVendors>Tasks Completed</BtnCurrentVendors>
                         </a>
                     </Row>
                     <Row>
                         <a href="/">
                             <DescriptionIcon></DescriptionIcon>
-                            <BtnMessanger>Budget Report</BtnMessanger>
+                            <BtnMessanger>Current Customers</BtnMessanger>
                         </a>
                     </Row>
+                    <Row>
+                        <a href="/">
+                            <DescriptionIcon></DescriptionIcon>
+                            <BtnMessanger>Reports of Weddings</BtnMessanger>
+                        </a>
+                    </Row>
+                    <RowLast>
+                        <a href="/">
+                            <Settings></Settings>
+                            <BtnSettings>Reminder</BtnSettings>
+                        </a>
+                    </RowLast>
                     <RowLast>
                         <a href="/">
                             <Settings></Settings>
