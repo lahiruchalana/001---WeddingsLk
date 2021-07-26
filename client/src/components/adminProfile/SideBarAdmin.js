@@ -163,7 +163,7 @@ const SideBarAdmin = (props) => {
                         // padding: "18px 36px",
                         // fontSize: "18px"
                         }}
-                        data-aos="fade-left" size="large" variant="contained" color="gray" href="/user_profile" >
+                        data-aos="fade-left" size="large" variant="contained" color="gray" href="/admin_profile" >
                         {user.name}
                     </Button>
                 </CommunityButton>

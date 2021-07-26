@@ -68,19 +68,19 @@ const SideBarUser = (props) => {
                     <Row>
                         <a href="/confirmed_wedding_plans">
                             <CheckCircleTwoToneIcon></CheckCircleTwoToneIcon>
-                            <BtnWeddingPlan>C Wedding Plans</BtnWeddingPlan> 
+                            <BtnYourServices>C Wedding Plans</BtnYourServices> 
                         </a>
                     </Row>
                     <Row>
                         <a href="/wish_to_buy_wedding_plans">
                             <WeddingPlan></WeddingPlan>
-                            <BtnWeddingPlan>WL Wedding Plans</BtnWeddingPlan> 
+                            <BtnYourServices>WL Wedding Plans</BtnYourServices> 
                         </a>
                     </Row>
                     <Row>
                         <a href="/budget_report">
                             <BugdetReport></BugdetReport>
-                            <BtnBugdetReport>Budget Report</BtnBugdetReport>
+                            <BtnYourServices>Budget Report</BtnYourServices>
                         </a>
                     </Row>
                     <Row>
@@ -92,7 +92,7 @@ const SideBarUser = (props) => {
                     <Row>
                         <a href="/">
                             <CurrentVendors></CurrentVendors>
-                            <BtnCurrentVendors>Current Vendors</BtnCurrentVendors>
+                            <BtnYourServices>Current Vendors</BtnYourServices>
                         </a>
                     </Row>
                     {/* <Row>
@@ -194,7 +194,7 @@ margin-top: -900px;
 `;
 
 const Row = styled.div`
-    margin-top: 20px;
+    margin-top: 17px;
     margin-left: 20px;
     a {
         display: flex;

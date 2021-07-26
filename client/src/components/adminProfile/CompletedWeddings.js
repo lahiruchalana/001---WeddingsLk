@@ -14,6 +14,9 @@ import LoadMore from './LoadMore'
 import Button from '@material-ui/core/Button';
 // import PaypalButton from './PaypalButton'
 
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
 function AdminProfile() {
 
     const state = useContext(GlobalState)
@@ -41,6 +44,8 @@ function AdminProfile() {
 
             setTotal(total)
         }
+
+        Aos.init({ duration: 2500 });
 
         getTotal()
 
@@ -108,7 +113,10 @@ function AdminProfile() {
         } */}
 
         <Text4>Completed Weddings</Text4>
-        <Text4>{total}</Text4>
+        <Product_card data-aos="fade-left">
+            <Text9>Number of Completed Weddings</Text9>
+            <Text10>{total}</Text10>
+        </Product_card>
 
         <Products>
             {
@@ -160,6 +168,40 @@ const Text4 = styled.div`
     color: rgb(78, 6, 69);
     font-weight: 700;
     text-transform: uppercase;
+`;
+
+const Text9 = styled.div`
+    font-size: 12px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+const Text10 = styled.div`
+    margin-left: auto;
+    margin-top: auto;
+    font-size: 35px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: auto;
+    text-align: center;
+    margin-top: 5px;
+`;
+
+const Product_card = styled.div`
+  width: 600px;
+  background-color: #008000;
+  overflow: hidden;
+  height: 100px;
+  padding: 15px;
+  box-shadow: 0 0 15px black;
+  position: relative;
+  left: 430px;
+  margin-top: -25px;
+  align-items: center;
 `;
 
 export default AdminProfile;
