@@ -54,12 +54,15 @@ function DetailProduct() {
                     <Text5>{detailProduct.description}</Text5>
                     <Line3></Line3>
                     <Text6>{detailProduct.content}</Text6>
-                    <Text1>{detailProduct.content_2}</Text1>
+                    <Line3></Line3>
+                    <Text5>{detailProduct.content_2}</Text5>
                     <LineLite1></LineLite1>
                     <div className="row">
-                    <Text2>{detailProduct.content_3}</Text2>
-                    <Text2>{detailProduct.content_4}</Text2>
+                    <Text7>{detailProduct.content_3}</Text7>
+                    <Text7>{detailProduct.content_4}</Text7>
                     </div>
+                    <LineLite1></LineLite1>
+                        <Text2>{detailProduct.content_5}</Text2>
                     <Line3></Line3>
                     <h4>Total Buyers: {detailProduct.sold}</h4>
                     <Line2></Line2>
@@ -73,10 +76,12 @@ function DetailProduct() {
                     onClick={() => addCart(detailProduct)}>
                         Add to Cart Now
                     </Link>
+                    <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
                     <Link to="/confirmed_vendors" className="cart"
                     onClick={() => addConfirmedVendors(detailProduct)}>
                         Confirm Vendor
                     </Link>
+                    <Text8>Give More Priority to This Vendor, Adding This Vendor to Wish to Buy List, Just Click on Wish to Buy</Text8>
                     <Link to="/wish_to_buy" className="cart"
                     onClick={() => addWishToBuy(detailProduct)}>
                         Wish To Buy
@@ -112,33 +117,52 @@ const Text1 = styled.div`
     font-weight: 700;
     color: darkblue;
 `;
+const Text8 = styled.div`
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: darkblue;
+`;
 const Text2 = styled.div`
     margin: 5px;
     font-size: 20px;
     color: darkgreen;
+    text-transform: lowercase;
 `;
 const Text3 = styled.div`
     margin: 5px;
     font-size: 20px;
     color: darkred;
+    text-transform: lowercase;
 `;
 const Text4 = styled.div`
     margin: 5px;
     font-size: 20px;
     color: darkviolet;
+    text-transform: lowercase;
 `;
 const Text5 = styled.div`
     margin: 5px;
     font-size: 20px;
     color: darkcyan;
     text-align: center;
+    text-transform: lowercase;
 `;
 const Text6 = styled.div`
     margin: 5px;
     font-size: 20px;
     color: darkslategray;
     text-align: center;
+    text-transform: lowercase;
 `;
+const Text7 = styled.div`
+    margin: 5px;
+    font-size: 20px;
+    color: darkslategray;
+    text-align: left;
+    text-transform: uppercase;
+`;
+
 const Line1 = styled.div`
     padding: 2px;
     margin: 5px;

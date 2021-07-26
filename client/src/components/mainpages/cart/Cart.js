@@ -160,12 +160,16 @@ function Cart() {
                                 </Button>
                             </div>
 
+                            <Text8>Give More Priority to This Vendor, Adding This Vendor to Wish to Buy List, Just Click on Wish to Buy</Text8>
+                            <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
+
                             <div className="row_btn">
 
                                 <Link to="/confirmed_vendors" className="cart"
                                 onClick={() => addConfirmedVendors(product)}>
                                     Confirmed Vendor
                                 </Link>
+                                
                                 <Link to="/wish_to_buy" className="cart"
                                 onClick={() => addWishToBuy(product)}>
                                     Wish To Buy
@@ -194,6 +198,12 @@ function Cart() {
         </div>
     )
 };
+const Text8 = styled.div`
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: darkblue;
+`;
 const Text1 = styled.div`
     margin: 5px;
     font-size: 22px;

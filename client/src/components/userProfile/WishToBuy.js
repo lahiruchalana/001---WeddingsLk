@@ -161,6 +161,8 @@ function WishToBuy() {
                                 Remove Wish to Buy Vendor 
                                 </Button>
                             </div>
+                            <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
+
                             <div className="row_btn">
 
                                 <Link to="/confirmed_vendors" className="cart"
@@ -190,7 +192,12 @@ function WishToBuy() {
         </div>
     )
 };
-
+const Text8 = styled.div`
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: darkblue;
+`;
 const TextTitle = styled.div`
     margin: 5px;
     font-size: 22px;
