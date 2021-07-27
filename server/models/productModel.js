@@ -81,6 +81,10 @@ const productSchema = mongoose.Schema({
     sold:{
         type: Number,
         default: 0
+    },
+    rating:{
+        type: Number,
+        default: 1
     }
 }, {
     timestamps: true //important

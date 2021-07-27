@@ -15,6 +15,7 @@ import upload from './routes/upload.js';
 import productRouter from './routes/productRouter.js';
 import weddingPlanRouter from './routes/weddingPlanRouter.js'
 import paymentRouter from './routes/paymentRouter.js';
+import feedBackRouter from './routes/feedBackRouter.js';
 
 import { join } from 'path'
 
@@ -69,6 +70,7 @@ app.use('/api', upload);
 app.use('/api', productRouter);
 app.use('/api', weddingPlanRouter);
 app.use('/api', paymentRouter);
+app.use('/api', feedBackRouter);
 
 
 /////end of Router setting (often what we change here)

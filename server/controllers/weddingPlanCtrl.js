@@ -108,3 +108,17 @@ export const updateWeddingPlans = async(req, res) =>{
         return res.status(500).json({msg: err.message})
     }
 };
+
+export const updateRating = async(req, res) =>{
+    try {
+        const {rating} = req.body;
+
+        await Products.findOneAndUpdate({_id: req.product.id}, {
+            rating
+        })
+
+        res.json({msg: "Your Rating Updated, Thank you for Rating the Vendor"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+};

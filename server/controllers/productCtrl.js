@@ -71,14 +71,14 @@ export const createProduct = async(req, res) =>{
 
         const product = await Products.findOne({product_id})
         if(product)
-            return res.status(400).json({msg: "This product already exists."})
+            return res.status(400).json({msg: "This vendor already exists."})
 
         const newProduct = new Products({
             product_id, title: title.toLowerCase(), price, max_price, description, content, content_2, content_3, content_4, content_5, address_line_1: address_line_1.toLowerCase(), address_line_2, address_line_3, other_services, contact_number_1, contact_number_2, images, category
         })
 
         await newProduct.save()
-        res.json({msg: "Created a product"})
+        res.json({msg: "Created a Vendor Service"})
 
     } catch (err) {
         return res.status(500).json({msg: err.message})
@@ -88,7 +88,7 @@ export const createProduct = async(req, res) =>{
 export const deleteProduct = async(req, res) =>{
     try {
         await Products.findByIdAndDelete(req.params.id)
-        res.json({msg: "Deleted a Product"})
+        res.json({msg: "Deleted a vendor"})
     } catch (err) {
         return res.status(500).json({msg: err.message})
     }
@@ -103,7 +103,22 @@ export const updateProduct = async(req, res) =>{
             title: title.toLowerCase(), price, max_price, description, content, content_2, content_3, content_4, content_5, address_line_1: address_line_1.toLowerCase(), address_line_2, address_line_3, other_services, contact_number_1, contact_number_2, images, category
         })
 
-        res.json({msg: "Updated a Product"})
+        res.json({msg: "Updated a vendor"})
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
+    }
+};
+
+
+export const updateRating = async(req, res) =>{
+    try {
+        const {rating} = req.body;
+
+        await Products.findOneAndUpdate({_id: req.product.id}, {
+            rating
+        })
+
+        res.json({msg: "Your Rating Updated, Thank you for Rating the Vendor"})
     } catch (err) {
         return res.status(500).json({msg: err.message})
     }
