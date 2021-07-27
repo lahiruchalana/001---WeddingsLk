@@ -37,7 +37,7 @@ import CurrentEmployees from '../adminProfile/CurrentEmployees'
 import CompletedWeddings from '../adminProfile/CompletedWeddings'
 import ProgressInWeddings from '../adminProfile/ProgressInWeddings'
 import NotAssignedWeddings from '../adminProfile/NotAssignedWeddings'
-import YourInfo from '../userProfile/YourInfo.js'
+import YourInfo from '../userProfile/YourInfo'
 
 function Pages() {
     const state = useContext(GlobalState)

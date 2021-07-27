@@ -11,6 +11,9 @@ import SideBarUser from './SideBarUser';
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
+import ReactStars from "react-rating-stars-component";
+
+
 
 function ConfirmedWeddingPlans() {
     const state = useContext(GlobalState)
@@ -79,6 +82,17 @@ function ConfirmedWeddingPlans() {
             addToConfirmedWeddingPlans(confirmed_wedding_plans)
         }
     }
+
+    const ratingChanged = (newRating) => {
+        // const product = products.findOneById()
+        // const res = axios.put(`/api/products/${product._id}/rating`, {rating: newRating},{
+        //     headers: {Authorization: token}
+        // })
+        
+        // setRating(newRating);
+        console.log(newRating);
+      };
+
      /////////////////// about payment /////////////////
     // const tranSuccess = async(payment) => {
     //     const {paymentID, address} = payment;
@@ -156,6 +170,16 @@ function ConfirmedWeddingPlans() {
                                     </Product_box>
                                 }
                             </Box>
+                            <h4>Rate {weddingPlan.title} Service</h4>
+                            <Star>
+                                <ReactStars 
+                                    count={6}
+                                    onChange={ratingChanged}
+                                    size={24}
+                                    activeColor="#ffd700"
+                                />
+                            </Star>
+                            <LineLite1></LineLite1>
                             <Delete 
                             onClick={() => removeWeddingPlan(weddingPlan._id)}>
                                 <Button variant="contained" color="inherit" >
@@ -190,7 +214,7 @@ const Product_card = styled.div`
 
   width: 1000px;
   overflow: hidden;
-  height: 580px;
+  height: 620px;
   padding: 15px;
   box-shadow: 0 0 15px #03045e;
   margin: 10px 100px;
@@ -316,6 +340,16 @@ const Container = styled.div`
 const Content = styled.div`
     
 `;
+
+const Star = styled.div`
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: -18px;
+    margin-right: auto;
+    margin-left: 410px;
+`;
+
 
 const Delete = styled.div`
     position: absolute;

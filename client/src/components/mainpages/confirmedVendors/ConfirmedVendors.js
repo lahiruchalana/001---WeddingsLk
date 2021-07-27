@@ -11,6 +11,10 @@ import SideBarUser from '../../userProfile/SideBarUser';
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
+
+import ReactStars from "react-rating-stars-component";
+
+
 function ConfirmedVendors() {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.userAPI.cart
@@ -40,6 +44,16 @@ function ConfirmedVendors() {
             headers: {Authorization: token}
         })
     }
+
+    const ratingChanged = (newRating) => {
+        // const product = products.findOneById()
+        // const res = axios.put(`/api/products/${product._id}/rating`, {rating: newRating},{
+        //     headers: {Authorization: token}
+        // })
+        
+        // setRating(newRating);
+        console.log(newRating);
+      };
 
      ////////////////// using this i can choose multiple quantity in one products /////////
     // const increment = (id) =>{
@@ -146,6 +160,19 @@ function ConfirmedVendors() {
                     <Text4>{product.address_line_2}</Text4>
                     <Text4>{product.address_line_3}</Text4>
                     <LineLite1></LineLite1>
+
+                    <h4>Rate {product.title} Service</h4>
+                    <Star>
+                        <ReactStars 
+                            count={6}
+                            onChange={ratingChanged}
+                            size={28}
+                            activeColor="#ffd700"
+                        />
+                    </Star>
+                    <LineLite1></LineLite1>
+
+
                             {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
                             <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
 
@@ -277,6 +304,14 @@ const LineLite1 = styled.div`
 const Container = styled.div`
     margin-right: 100px;
     margin-left: 100px;
+`;
+
+const Star = styled.div`
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 180px;
 `;
 
 const Content = styled.div`

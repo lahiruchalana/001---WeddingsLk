@@ -10,6 +10,7 @@ import Footer from '../../footer/Footer'
 import Vendors from '../../vendor/Vendors'
 
 
+
 function Products() {
     const state = useContext(GlobalState)
     const [products, setProducts] = state.productsAPI.products
@@ -18,6 +19,8 @@ function Products() {
     const [callback, setCallback] = state.productsAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
+
+    
 
     const handleCheck = (id) =>{
         products.forEach(product => {

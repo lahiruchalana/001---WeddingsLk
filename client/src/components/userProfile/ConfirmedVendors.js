@@ -11,13 +11,46 @@ import SideBarUser from './SideBarUser';
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
+// import StarRatingComponent from 'react-star-rating-component';
+
+import ReactStars from "react-rating-stars-component";
+
 
 function ConfirmedVendors() {
     const state = useContext(GlobalState)
     const [cart, setCart] = state.userAPI.cart
     const [confirmed_vendors, setConfirmedVendors] = state.userAPI.confirmed_vendors
+    const [products, setProducts] = state.productsAPI.products
     const [token] = state.token
     const [total, setTotal] = useState(0)
+
+    const [rating, setRating] = state.productsAPI.rating
+    const [callback, setCallback] = state.productsAPI.callback
+    // const [callback, setCallback] = state.productsAPI.callback
+
+
+    const ratingChanged = (newRating) => {
+        // const product = products.findOneById()
+        // const res = axios.put(`/api/products/${product._id}/rating`, {rating: newRating},{
+        //     headers: {Authorization: token}
+        // })
+        
+        // setRating(newRating);
+        console.log(newRating);
+      };
+       
+
+    // const onStarClick = (rating, prevValue, id) => {
+
+    //     const res = axios.put(`/api/products/${id}/rating`, {rating: rating},{
+    //         headers: {Authorization: token}
+    //     })
+    //     // alert(res.data.msg)
+
+    //     setRating({rating: rating});
+    //     setCallback(!callback)
+    // }
+
 
     //////////////////get total of prices of [cart] //////////////////
     useEffect(() =>{
@@ -42,28 +75,6 @@ function ConfirmedVendors() {
         })
     }
 
-     ////////////////// using this i can choose multiple quantity in one products /////////
-    // const increment = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity += 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
-
-    // const decrement = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
     ///////////// remove vendors /////////////
     const removeConfirmedVendor = id =>{
         if(window.confirm("Do you want to Remove this Vendor?")){
@@ -77,20 +88,6 @@ function ConfirmedVendors() {
             addToConfirmedVendors(confirmed_vendors)
         }
     }
-     /////////////////// about payment /////////////////
-    // const tranSuccess = async(payment) => {
-    //     const {paymentID, address} = payment;
-
-    //     await axios.post('/api/payment', {cart, paymentID, address}, {
-    //         headers: {Authorization: token}
-    //     })
-
-    //     setCart([])
-    //     addToCart([])
-    //     alert("You have successfully placed an order.")
-    // }
-
-
     if(confirmed_vendors.length === 0) 
         return(<Content>
             <Header/>
@@ -102,7 +99,6 @@ function ConfirmedVendors() {
             <br></br>
         <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Confirmed Services of Vendors</h2>
         </Content>);
-
     return (
         <div>
         <Header/>
@@ -149,6 +145,26 @@ function ConfirmedVendors() {
                     <Text4>{product.address_line_2}</Text4>
                     <Text4>{product.address_line_3}</Text4>
                     <LineLite1></LineLite1>
+
+                    {/* <div>
+                        <h2>Rating from state: {product.rating}</h2>
+                        <StarRatingComponent 
+                        name="rate1" 
+                        starCount={10}
+                        value={rating}
+                        onStarClick={() => onStarClick(rating, product.rating, product._id)}
+                        />
+                    </div> */}
+                    <h4>Rate {product.title} Service</h4>
+                    <Star>
+                        <ReactStars 
+                            count={6}
+                            onChange={ratingChanged}
+                            size={28}
+                            activeColor="#ffd700"
+                        />
+                    </Star>
+                    <LineLite1></LineLite1>
                             {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
                             <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
 
@@ -169,17 +185,6 @@ function ConfirmedVendors() {
                 ))
             }
 
-            {/* <div className="total">
-                <br></br>
-                <h1>Total: Rs {total}</h1>
-                
-                <h5>Note: this is the minimum price of your cart</h5>
-                <br></br>
-                <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} />
-                <br></br>
-            </div> */}
         </div>
         </Container>
         <Footer/>
@@ -282,6 +287,14 @@ const LineLite1 = styled.div`
     margin-right: auto;
     width: 500px;
     background-color: darkgrey;
+`;
+
+const Star = styled.div`
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 180px;
 `;
 
 const Container = styled.div`

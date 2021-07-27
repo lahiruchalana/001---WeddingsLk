@@ -11,6 +11,8 @@ function ProductsAPI() {
     const [searchAddress, setSearchAddress] = useState('')
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
+    const [rating, setRating] = useState(1)
+
 
     useEffect(() =>{
         const getProducts = async () => {
@@ -29,7 +31,8 @@ function ProductsAPI() {
         search: [search, setSearch],
         page: [page, setPage],
         searchAddress: [searchAddress, setSearchAddress],
-        result: [result, setResult]
+        result: [result, setResult],
+        rating: [rating, setRating]
     }
 }
 
