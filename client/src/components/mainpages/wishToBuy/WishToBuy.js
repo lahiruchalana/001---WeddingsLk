@@ -143,7 +143,7 @@ function WishToBuy() {
                     <LineLite1></LineLite1>
                         <Text2>{product.content_5}</Text2>
                     <Line3></Line3>
-                    <h4>Total Buyers: {product.sold}</h4>
+                    <h4>Total Buyers: 4</h4>
                     <Line2></Line2>
                     <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
                     <Line1></Line1>

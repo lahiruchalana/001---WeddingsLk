@@ -17,12 +17,20 @@ function Cart() {
     const [cart, setCart] = state.userAPI.cart
     const [token] = state.token
     const [total, setTotal] = useState(0)
+    const [totalConfirmedCustomers, setTotalConfirmedCustomers] = useState(0)
     const addConfirmedVendors = state.userAPI.addConfirmedVendors
     const addWishToBuy = state.userAPI.addWishToBuy
+    const [users] = state.userInfoAPI.users
 
     //////////////////get total of prices of [cart] //////////////////
     useEffect(() =>{
         const getTotal = () =>{
+            const totalConfirmedCustomers = users.reduce((prev, user) => {
+                return  user.confirmed_vendors.title && user.confirmed_wedding_plans == '' ? prev + 0 : prev + 1
+            },0)
+
+            setTotalConfirmedCustomers(totalConfirmedCustomers)
+
             const total = cart.reduce((prev, item) => {
                 return prev + (item.price * item.quantity)
             },0)
@@ -141,7 +149,7 @@ function Cart() {
                     <LineLite1></LineLite1>
                         <Text2>{product.content_5}</Text2>
                     <Line3></Line3>
-                    <h4>Total Buyers: {product.sold}</h4>
+                    <h4>Total Buyers: 4</h4>
                     <Line2></Line2>
                     <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
                     <Line1></Line1>

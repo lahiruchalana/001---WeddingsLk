@@ -70,7 +70,7 @@ function DetailProduct() {
                     <LineLite1></LineLite1>
                         <Text2>{detailProduct.content_5}</Text2>
                     <Line3></Line3>
-                    <h4>Total Buyers: {detailProduct.sold}</h4>
+                    <h4>Total Buyers: 4</h4>
                     <Line2></Line2>
                     <h4>Contact: {detailProduct.contact_number_2} / {detailProduct.contact_number_1}</h4>
                     <Line1></Line1>
