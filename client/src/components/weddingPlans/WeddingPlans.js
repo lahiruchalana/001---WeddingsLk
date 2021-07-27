@@ -18,6 +18,8 @@ import Filters from './Filters'
 import LoadMore from './LoadMore'
 
 
+
+
 const WeddingPlans = () => {
 
 
@@ -139,8 +141,7 @@ const WeddingPlans = () => {
 
 
                 </ContentWeddingPlan>
-
-
+        
                 
                 <AnimatedImages
                     colors={imagesList}

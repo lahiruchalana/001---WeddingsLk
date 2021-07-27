@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
+import ReactStars from "react-rating-stars-component";
+
 
 function WeddingPlanItem({weddingPlan, isAdmin, deleteWeddingPlan, handleCheck}) {
 
@@ -20,6 +22,13 @@ function WeddingPlanItem({weddingPlan, isAdmin, deleteWeddingPlan, handleCheck})
             <img data-aos="fade-left" src={weddingPlan.images_1.url} alt="" />
 
             <h2 title={weddingPlan.title}>{weddingPlan.title}</h2>
+            <ReactStars 
+                        count={6}
+                        value={weddingPlan.rating}
+                        onChange={false}
+                        size={24}
+                        activeColor="#ffd700"
+                    />
 
             <Box>
                 <Product_box>

@@ -7,6 +7,8 @@ import 'aos/dist/aos.css';
 import {GlobalState} from '../../../../GlobalState'
 import axios from 'axios'
 
+import ReactStars from "react-rating-stars-component";
+
 
 function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
 
@@ -38,6 +40,15 @@ function ProductItem({product, isAdmin, deleteProduct, handleCheck}) {
                 <h2 data-aos="fade-left" title={product.title}>{product.title}</h2>
 
 
+
+                <ReactStars 
+                    count={6}
+                    value={product.rating}
+                    onChange={false}
+                    size={28}
+                    activeColor="#ffd700"
+                />
+ 
                 {/* <div>
                     <StarRatingComponent 
                     name="rate2" 
