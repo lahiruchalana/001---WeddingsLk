@@ -8,6 +8,8 @@ import DescriptionIcon from '@material-ui/icons/Description';
 import {GlobalState} from '../../GlobalState'
 import React, {useContext, useState, useEffect} from 'react'
 import { Button } from '@material-ui/core';
+import AddAlertIcon from '@material-ui/icons/AddAlert';
+
 
 const SideBarEmployee = (props) => {
 
@@ -36,32 +38,38 @@ const SideBarEmployee = (props) => {
                         </a>
                     </Row>
                     <Row>
-                        <a href="/">
+                        <a href="/employee_profile">
+                            <WeddingPlan></WeddingPlan>
+                            <BtnWeddingPlan>Your Profile</BtnWeddingPlan> 
+                        </a>
+                    </Row>
+                    <Row>
+                        <a href="/tasks_in_progress">
                             <WeddingPlan></WeddingPlan>
                             <BtnWeddingPlan>Tasks in Progress</BtnWeddingPlan> 
                         </a>
                     </Row>
                     <Row>
-                        <a href="/">
+                        <a href="/tasks_completed">
                             <PlaylistAddIcon></PlaylistAddIcon>
                             <BtnCurrentVendors>Tasks Completed</BtnCurrentVendors>
                         </a>
                     </Row>
                     <Row>
-                        <a href="/">
+                        <a href="/current_customers">
                             <DescriptionIcon></DescriptionIcon>
                             <BtnMessanger>Current Customers</BtnMessanger>
                         </a>
                     </Row>
                     <Row>
-                        <a href="/">
+                        <a href="/wedding_reports">
                             <DescriptionIcon></DescriptionIcon>
-                            <BtnMessanger>Reports of Weddings</BtnMessanger>
+                            <BtnMessanger>Wedding Reports</BtnMessanger>
                         </a>
                     </Row>
                     <RowLast>
-                        <a href="/">
-                            <Settings></Settings>
+                        <a href="/reminder">
+                            <AddAlertIcon></AddAlertIcon>
                             <BtnSettings>Reminder</BtnSettings>
                         </a>
                     </RowLast>

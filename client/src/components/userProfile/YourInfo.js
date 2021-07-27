@@ -38,7 +38,7 @@ function YourInfo() {
                 <br></br>
                 <br></br>
 
-                <Text4>Your Info</Text4>
+                <Text4>Your Profile</Text4>
                 <Product_card data-aos="fade-left">
                     <Text9>Confirmed Wedding Plans</Text9>
                     <Text10>{confirmed_wedding_plans.length}</Text10>

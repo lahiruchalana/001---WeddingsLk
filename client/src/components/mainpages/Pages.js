@@ -8,36 +8,39 @@ import OrderHistory from './history/OrderHistory'
 import OrderDetails from './history/OrderDetails'
 import Cart from './cart/Cart'
 import ConfirmedVendors from './confirmedVendors/ConfirmedVendors'
-import UserDashboardConfirmVendors from '../userProfile/ConfirmedVendors'
 import WishToBuy from './wishToBuy/WishToBuy'
-import UserDashboardWishToBuy from '../userProfile/WishToBuy'
 import NotFound from './utils/not_found/NotFound'
 import Categories from './categories/Categories'
 import CreateProduct from './createProduct/CreateProduct'
 
 import {GlobalState} from '../../GlobalState'
 import Home from '../home/Home'
-import AdminProfile from '../adminProfile/AdminProfile'
-import UserProfile from '../userProfile/UserProfileCart'
-import VendorManagement from '../adminProfile/VendorManagement'
 import Services from '../services/Services'
 import Example from '../budgetReport/BudgetReport'
-import AdminServices from '../adminProfile/ServicesManagement'
 import WeddingPlans from '../weddingPlans/WeddingPlans'
 import Shop from '../shop/Shop'
 import Galleries from '../galleries/Galleries'
-import EmployeeProfile from '../employeeProfile/EmployeeProfile'
 import DetailWeddingPlan from '../detailWeddingPlan/DetailWeddingPlan'
-import WeddingPlanManagement from '../adminProfile/WeddingPlanManagement'
-import ConfirmedCustomers from '../adminProfile/ConfirmedCustomers'
-import CustomersWishList from '../adminProfile/CustomersWishList'
+import YourInfo from '../userProfile/YourInfo'
+import UserProfile from '../userProfile/UserProfileCart'
 import ConfirmedWeddingPlans from '../userProfile/ConfirmedWeddingPlans'
 import WishToBuyWeddingPlans from '../userProfile/WishToBuyWeddingPlans'
+import UserDashboardWishToBuy from '../userProfile/WishToBuy'
+import UserDashboardConfirmVendors from '../userProfile/ConfirmedVendors'
+import AdminProfile from '../adminProfile/AdminProfile'
+import AdminServices from '../adminProfile/ServicesManagement'
 import CurrentEmployees from '../adminProfile/CurrentEmployees'
+import VendorManagement from '../adminProfile/VendorManagement'
+import CustomersWishList from '../adminProfile/CustomersWishList'
 import CompletedWeddings from '../adminProfile/CompletedWeddings'
+import ConfirmedCustomers from '../adminProfile/ConfirmedCustomers'
 import ProgressInWeddings from '../adminProfile/ProgressInWeddings'
 import NotAssignedWeddings from '../adminProfile/NotAssignedWeddings'
-import YourInfo from '../userProfile/YourInfo'
+import WeddingPlanManagement from '../adminProfile/WeddingPlanManagement'
+import EmployeeProfile from '../employeeProfile/EmployeeProfile'
+import TasksInProgress from '../employeeProfile/TasksInProgress'
+import TasksCompleted from '../employeeProfile/TasksCompleted'
+import CurrentCustomers from '../employeeProfile/CurrentCustomers'
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -89,6 +92,9 @@ function Pages() {
             <Route path="/your_info" exact component={isLogged ? YourInfo : NotFound} />
 
             <Route path="/employee_profile" exact component={isEmployee ? EmployeeProfile : NotFound} />
+            <Route path="/tasks_in_progress" exact component={isEmployee ? TasksInProgress : NotFound} />
+            <Route path="/tasks_completed" exact component={isEmployee ? TasksCompleted : NotFound} />
+            <Route path="/current_customers" exact component={isEmployee ? CurrentCustomers : NotFound} />
 
 
             <Route path="/cart" exact component={Cart} />

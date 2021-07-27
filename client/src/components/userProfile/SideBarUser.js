@@ -57,7 +57,7 @@ const SideBarUser = (props) => {
                     <Row data-aos="fade-right">
                         <a href="/your_info">
                             <AccountBoxIcon></AccountBoxIcon>
-                            <BtnYourServices data-aos="fade-right">Your Info</BtnYourServices>
+                            <BtnYourServices data-aos="fade-right">Your Profile</BtnYourServices>
                         </a>
                     </Row>
                     <Row data-aos="fade-right">
