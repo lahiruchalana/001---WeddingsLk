@@ -34,7 +34,7 @@ function Filters() {
                 </select>
             </div>
 
-            <input type="text" value={search} placeholder="Search Your Vendors!"
+            <input type="text" value={search} placeholder="Search Your Vendors!!!! Search Your Nearest Vendors!!!!"
             onChange={e => setSearch(e.target.value.toLowerCase())} />
 
             {/* <input type="text" value={searchAddress} placeholder="Search Your Nearest Vendor!!! "

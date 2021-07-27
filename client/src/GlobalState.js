@@ -5,6 +5,7 @@ import CategoriesAPI from './api/CategoriesAPI'
 import UserInfoAPI from './api/UserInfoAPI'
 import WeddingPlansAPI from './api/WeddingPlansAPI'
 import axios from 'axios'
+import FeedBackAPI from './api/FeedBackAPI'
 
 export const GlobalState = createContext()
 
@@ -37,7 +38,9 @@ export const DataProvider = ({children}) =>{
         userAPI: UserAPI(token),
         categoriesAPI: CategoriesAPI(),
         userInfoAPI: UserInfoAPI(),
-        weddingPlansAPI: WeddingPlansAPI()
+        weddingPlansAPI: WeddingPlansAPI(),
+
+        feedBackAPI: FeedBackAPI()
 
     }
 

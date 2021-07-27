@@ -198,35 +198,35 @@ const VendorManagement = () => {
                 </div>
 
                 <div className="row">
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description">Description_1</label>
                     <textarea type="text" name="description" id="description" required
                     value={product.description} rows="5" onChange={handleChangeInput} />
                 </div>
 
                 <div className="row">
-                    <label htmlFor="content">Content</label>
+                    <label htmlFor="content">Description_2</label>
                     <textarea type="text" name="content" id="content" required
                     value={product.content} rows="7" onChange={handleChangeInput} />
                 </div>
 
 
                 <div className="row">
-                    <label htmlFor="content">Add More Info</label>
+                    <label htmlFor="content">Description_3</label>
                     <textarea type="text" name="content_2" id="content_2" required
                     value={product.content_2} rows="7" onChange={handleChangeInput} />
                 </div>
                 <div className="row">
-                    <label htmlFor="content">Add More Info</label>
+                    <label htmlFor="content">Packages_1</label>
                     <textarea type="text" name="content_3" id="content_3" required
                     value={product.content_3} rows="7" onChange={handleChangeInput} />
                 </div>
                 <div className="row">
-                    <label htmlFor="content_4">Add More Info</label>
+                    <label htmlFor="content_4">Packages_2</label>
                     <textarea type="text" name="content_4" id="content_4" required
                     value={product.content_4} rows="7" onChange={handleChangeInput} />
                 </div>
                 <div className="row">
-                    <label htmlFor="content_5">Add More Info</label>
+                    <label htmlFor="content_5">Add Links</label>
                     <textarea type="text" name="content_5" id="content_5" required
                     value={product.content_5} rows="7" onChange={handleChangeInput} />
                 </div>

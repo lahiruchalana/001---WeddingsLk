@@ -270,8 +270,8 @@ const Header = () => {
                     // padding: "18px 36px",
                     // fontSize: "18px"
                     }}
-                    data-aos="fade-left" size="large" variant="contained" color="gray" href="/communityfeedbacks" >
-                    Join with Community
+                    data-aos="fade-left" size="large" variant="contained" color="gray" href="/feedbacks" >
+                    Community FeedBacks
                 </Button>
             </CommunityButton>
             <Messanger data-aos="fade-up">

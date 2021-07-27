@@ -41,6 +41,7 @@ import EmployeeProfile from '../employeeProfile/EmployeeProfile'
 import TasksInProgress from '../employeeProfile/TasksInProgress'
 import TasksCompleted from '../employeeProfile/TasksCompleted'
 import CurrentCustomers from '../employeeProfile/CurrentCustomers'
+import FeedBack from '../feedBacks/FeedBacks'
 
 function Pages() {
     const state = useContext(GlobalState)
@@ -66,6 +67,7 @@ function Pages() {
 
             <Route path="/shops" exact component={Shop} />
             <Route path="/galleries" exact component={Galleries} />
+            <Route path="/feedbacks" exact component={FeedBack} />
             <Route path="/detail/:id" exact component={DetailProduct} />
 
             <Route path="/login" exact component={isLogged ? NotFound : Login} />
