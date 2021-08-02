@@ -6,8 +6,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FolderSharedIcon from '@material-ui/icons/FolderShared';
 import StoreIcon from '@material-ui/icons/Store';
-import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
-import EventIcon from '@material-ui/icons/Event';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import AssignmentTurnedInIcon from '@material-ui/icons/AssignmentTurnedIn';
@@ -20,9 +18,7 @@ import React, {useContext, useState, useEffect} from 'react'
 import { Button } from '@material-ui/core';
 import AssignmentLateIcon from '@material-ui/icons/AssignmentLate';
 
-
 const SideBarAdmin = (props) => {
-
     const state = useContext(GlobalState)
     const [user] = state.userAPI.user
 
@@ -32,7 +28,6 @@ const SideBarAdmin = (props) => {
             <ImageBg src="/images/HomeGallery5.jpg"
                     ></ImageBg>
                 <NavBar>
-                    {/* Use Id to assign the couple name here  */}
                     <Logo>
                         <a href= '/'>
                             <img src= "../images/Logo.png"/> 
@@ -158,10 +153,7 @@ const SideBarAdmin = (props) => {
             { user.name == '' ? '' :
                 <CommunityButton>
                     <Button style={{
-                        // borderRadius: 35,
                         backgroundColor: "#c9184a"
-                        // padding: "18px 36px",
-                        // fontSize: "18px"
                         }}
                         data-aos="fade-left" size="large" variant="contained" color="gray" href="/admin_profile" >
                         {user.name}

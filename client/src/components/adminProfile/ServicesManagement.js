@@ -63,34 +63,31 @@ function Categories() {
             <br></br>
             <br></br>
             <br></br>
-
             <Text4>Services Management</Text4>
-
             <br/>
             <br/>
-        <div className="categories">
-            <form onSubmit={createCategory}>
-                <label htmlFor="category">Add Services</label>
-                <input type="text" name="category" value={category} required
-                onChange={e => setCategory(e.target.value)} />
+            <div className="categories">
+                <form onSubmit={createCategory}>
+                    <label htmlFor="category">Add Services</label>
+                    <input type="text" name="category" value={category} required
+                    onChange={e => setCategory(e.target.value)} />
 
-                <button type="submit">{onEdit? "Update" : "Create"}</button>
-            </form>
-
-            <div className="col">
-                {
-                    categories.map(category => (
-                        <div className="row" key={category._id}>
-                            <p>{category.name}</p>
-                            <div>
-                                <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
-                                <button onClick={() => deleteCategory(category._id)}>Delete</button>
+                    <button type="submit">{onEdit? "Update" : "Create"}</button>
+                </form>
+                <div className="col">
+                    {
+                        categories.map(category => (
+                            <div className="row" key={category._id}>
+                                <p>{category.name}</p>
+                                <div>
+                                    <button onClick={() => editCategory(category._id, category.name)}>Edit</button>
+                                    <button onClick={() => deleteCategory(category._id)}>Delete</button>
+                                </div>
                             </div>
-                        </div>
-                    ))
-                }
+                        ))
+                    }
+                </div>
             </div>
-        </div>
         </div>       
     )
 }

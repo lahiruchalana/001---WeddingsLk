@@ -1,14 +1,11 @@
 import styled from "styled-components";
 import SideBarAdmin from "./SideBarAdmin";
 import Header from "../header/Header";
-
-
 import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios'
 import {GlobalState} from '../../GlobalState'
 import Loading from '../mainpages/utils/loading/Loading'
 import {useHistory, useParams} from 'react-router-dom'
-
 
 const initialState = {
     product_id: '',
@@ -32,21 +29,15 @@ const initialState = {
 }
 
 const VendorManagement = () => {
-
-
     const state = useContext(GlobalState)
     const [product, setProduct] = useState(initialState)
     const [categories] = state.categoriesAPI.categories
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
-
-
     const [isAdmin] = state.userAPI.isAdmin
     const [token] = state.token
-
     const history = useHistory()
     const param = useParams()
-
     const [products] = state.productsAPI.products
     const [onEdit, setOnEdit] = useState(false)
     const [callback, setCallback] = state.productsAPI.callback
@@ -141,147 +132,124 @@ const VendorManagement = () => {
         display: images ? "block" : "none"
     }
 
-
     return (
         <Container>
             <Header/>
             <SideBarAdmin/>
-            
             <br></br>
             <br></br>
             <br></br>
             <br></br>
-            
-
             <Text4>Vendor Management</Text4>
-
             <Content>
-            
-
-
-            <div className="create_product">
-            <div className="upload">
-                <input type="file" name="file" id="file_up" onChange={handleUpload}/>
-                {
-                    loading ? <div id="file_img"><Loading /></div>
-
-                    :<div id="file_img" style={styleUpload}>
-                        <img src={images ? images.url : ''} alt=""/>
-                        <span onClick={handleDestroy}>X</span>
-                    </div>
-                }
-                
-            </div>
-
-            <form onSubmit={handleSubmit}>
-                <div className="row">
-                    <label htmlFor="product_id">Product ID</label>
-                    <input type="text" name="product_id" id="product_id" required
-                    value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" name="title" id="title" required
-                    value={product.title} onChange={handleChangeInput} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="price">Price</label>
-                    <input type="number" name="price" id="price" required
-                    value={product.price} onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="price">Maximum Price</label>
-                    <input type="number" name="max_price" id="max_price" 
-                    value={product.max_price} onChange={handleChangeInput} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="description">Description_1</label>
-                    <textarea type="text" name="description" id="description" required
-                    value={product.description} rows="5" onChange={handleChangeInput} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="content">Description_2</label>
-                    <textarea type="text" name="content" id="content" required
-                    value={product.content} rows="7" onChange={handleChangeInput} />
-                </div>
-
-
-                <div className="row">
-                    <label htmlFor="content">Description_3</label>
-                    <textarea type="text" name="content_2" id="content_2" required
-                    value={product.content_2} rows="7" onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="content">Packages_1</label>
-                    <textarea type="text" name="content_3" id="content_3" required
-                    value={product.content_3} rows="7" onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="content_4">Packages_2</label>
-                    <textarea type="text" name="content_4" id="content_4" required
-                    value={product.content_4} rows="7" onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="content_5">Add Links</label>
-                    <textarea type="text" name="content_5" id="content_5" required
-                    value={product.content_5} rows="7" onChange={handleChangeInput} />
-                </div>
-
-                <div className="row">
-                    <label htmlFor="title">Address Line 1</label>
-                    <input type="text" name="address_line_1" id="address_line_1" required
-                    value={product.address_line_1} onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="title">Address Line 2</label>
-                    <input type="text" name="address_line_2" id="address_line_2" required
-                    value={product.address_line_2} onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="title">Address Line 3</label>
-                    <input type="text" name="address_line_3" id="address_line_3" required
-                    value={product.address_line_3} onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="description">Other Services</label>
-                    <textarea type="text" name="other_services" id="other_services" required
-                    value={product.other_services} rows="5" onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="price">Contact Number 1</label>
-                    <input type="number" name="contact_number_1" id="contact_number_1" 
-                    value={product.contact_number_1} onChange={handleChangeInput} />
-                </div>
-                <div className="row">
-                    <label htmlFor="price">Contact Number 2</label>
-                    <input type="number" name="contact_number_2" id="contact_number_2" 
-                    value={product.contact_number_2} onChange={handleChangeInput} />
-                </div>
-
-
-                <div className="row">
-                    <label htmlFor="categories">Categories: </label>
-                    <select name="category" value={product.category} onChange={handleChangeInput} >
-                        <option value="">Please select a category</option>
+                <div className="create_product">
+                    <div className="upload">
+                        <input type="file" name="file" id="file_up" onChange={handleUpload}/>
                         {
-                            categories.map(category => (
-                                <option value={category._id} key={category._id}>
-                                    {category.name}
-                                </option>
-                            ))
+                            loading ? <div id="file_img"><Loading /></div>
+                            :<div id="file_img" style={styleUpload}>
+                                <img src={images ? images.url : ''} alt=""/>
+                                <span onClick={handleDestroy}>X</span>
+                            </div>
                         }
-                    </select>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                        <div className="row">
+                            <label htmlFor="product_id">Product ID</label>
+                            <input type="text" name="product_id" id="product_id" required
+                            value={product.product_id} onChange={handleChangeInput} disabled={onEdit} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="title">Title</label>
+                            <input type="text" name="title" id="title" required
+                            value={product.title} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="price">Price</label>
+                            <input type="number" name="price" id="price" required
+                            value={product.price} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="price">Maximum Price</label>
+                            <input type="number" name="max_price" id="max_price" 
+                            value={product.max_price} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="description">Description_1</label>
+                            <textarea type="text" name="description" id="description" required
+                            value={product.description} rows="5" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="content">Description_2</label>
+                            <textarea type="text" name="content" id="content" required
+                            value={product.content} rows="7" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="content">Description_3</label>
+                            <textarea type="text" name="content_2" id="content_2" required
+                            value={product.content_2} rows="7" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="content">Packages_1</label>
+                            <textarea type="text" name="content_3" id="content_3" required
+                            value={product.content_3} rows="7" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="content_4">Packages_2</label>
+                            <textarea type="text" name="content_4" id="content_4" required
+                            value={product.content_4} rows="7" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="content_5">Add Links</label>
+                            <textarea type="text" name="content_5" id="content_5" required
+                            value={product.content_5} rows="7" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="title">Address Line 1</label>
+                            <input type="text" name="address_line_1" id="address_line_1" required
+                            value={product.address_line_1} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="title">Address Line 2</label>
+                            <input type="text" name="address_line_2" id="address_line_2" required
+                            value={product.address_line_2} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="title">Address Line 3</label>
+                            <input type="text" name="address_line_3" id="address_line_3" required
+                            value={product.address_line_3} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="description">Other Services</label>
+                            <textarea type="text" name="other_services" id="other_services" required
+                            value={product.other_services} rows="5" onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="price">Contact Number 1</label>
+                            <input type="number" name="contact_number_1" id="contact_number_1" 
+                            value={product.contact_number_1} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="price">Contact Number 2</label>
+                            <input type="number" name="contact_number_2" id="contact_number_2" 
+                            value={product.contact_number_2} onChange={handleChangeInput} />
+                        </div>
+                        <div className="row">
+                            <label htmlFor="categories">Categories: </label>
+                            <select name="category" value={product.category} onChange={handleChangeInput} >
+                                <option value="">Please select a category</option>
+                                {
+                                    categories.map(category => (
+                                        <option value={category._id} key={category._id}>
+                                            {category.name}
+                                        </option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        <button type="submit">{onEdit? "Update" : "Create"}</button>
+                    </form>
                 </div>
-
-                <button type="submit">{onEdit? "Update" : "Create"}</button>
-            </form>
-        </div>
-
-
             </Content>
         </Container>   
     );
