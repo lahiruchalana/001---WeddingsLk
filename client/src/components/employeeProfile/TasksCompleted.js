@@ -16,79 +16,26 @@ import Button from '@material-ui/core/Button';
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
-
 function AdminProfile() {
-
     const state = useContext(GlobalState)
     const [users, setUsers] = state.userInfoAPI.users
-    const [isAdmin] = state.userAPI.isAdmin
-    const [token] = state.token
-    const [callback, setCallback] = state.userInfoAPI.callback
     const [loading, setLoading] = useState(false)
-    const [isCheck, setIsCheck] = useState(false)
     const [total, setTotal] = useState(0)
     const [user] = state.userAPI.user
-
-
-    const handleCheck = (id) =>{
-        users.forEach(user => {
-            if(user._id === id) user.checked = !user.checked
-        })
-        setUsers([...users])
-    }
 
     useEffect(() =>{
         const getTotal = () =>{
             const total = users.reduce((prev, user1) => {
                 return  user1.progress == '1' && user.name == user1.emp_name ? prev + 1 : prev + 0
             },0)
-
             setTotal(total)
         }
-
         Aos.init({ duration: 2500 });
-
         getTotal()
-
     },[users])
-
-    // const deleteProduct = async(id, public_id) => {
-    //     try {
-    //         setLoading(true)
-    //         const destroyImg = axios.post('/api/destroy', {public_id},{
-    //             headers: {Authorization: token}
-    //         })
-    //         const deleteProduct = axios.delete(`/api/products/${id}`, {
-    //             headers: {Authorization: token}
-    //         })
-
-    //         await destroyImg
-    //         await deleteProduct
-    //         setCallback(!callback)
-    //         setLoading(false)
-    //     } catch (err) {
-    //         alert(err.response.data.msg)
-    //     }
-    // }
-
-    // const checkAll = () =>{
-    //     products.forEach(product => {
-    //         product.checked = !isCheck
-    //     })
-    //     setProducts([...products])
-    //     setIsCheck(!isCheck)
-    // }
-
-    // const deleteAll = () =>{
-    //     products.forEach(product => {
-    //         if(product.checked) deleteProduct(product._id, product.images.public_id)
-    //     })
-    // }
 
     if(loading) return <div><Loading /></div>
     
-
-
     return (
         <>
         <Container>
@@ -99,43 +46,21 @@ function AdminProfile() {
                 <br></br>
                 <br></br>
                 <br></br>
-
-                {/* ////////////////// category issue comes from (Filters) ///////////////// */}
-                {/* <Filters /> */}
-
-                
-        {/* {
-            isAdmin && 
-            <div className="delete-all">
-                <span>Select all</span>
-                <input type="checkbox" checked={isCheck} onChange={checkAll} />
-                <button onClick={deleteAll}>Delete ALL</button>
-            </div>
-        } */}
-
-        <Text4>Your Completed Weddings</Text4>
-        <Product_card data-aos="fade-left">
-            <Text9>Number of Completed Weddings</Text9>
-            <Text10>{total}</Text10>
-        </Product_card>
-
-
-
-        <Products>
-            {
-                users.map(user1 => {
-                    return user1.progress == '1' && user1.emp_name == user.name ? <UserItemConfirmedCustomers key={user1._id} user={user1} />
-                     : null
-                    // isAdmin={isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck} />
-                })
-            } 
-        </Products>
-
-        <LoadMore />
-        {users.length === 0 && <Loading />}
-
-
-           
+                <Text4>Your Completed Weddings</Text4>
+                <Product_card data-aos="fade-left">
+                    <Text9>Number of Completed Weddings</Text9>
+                    <Text10>{total}</Text10>
+                </Product_card>
+                <Products>
+                    {
+                        users.map(user1 => {
+                            return user1.progress == '1' && user1.emp_name == user.name ? <UserItemConfirmedCustomers key={user1._id} user={user1} />
+                            : null
+                        })
+                    } 
+                </Products>
+                <LoadMore />
+                {users.length === 0 && <Loading />}
             </Content>
         </Container>  
         </>

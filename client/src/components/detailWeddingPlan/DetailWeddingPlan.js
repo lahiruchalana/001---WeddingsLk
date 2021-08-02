@@ -2,13 +2,10 @@ import React, {useContext, useState, useEffect} from 'react'
 import styled from "styled-components";
 import {useParams, Link} from 'react-router-dom'
 import {GlobalState} from '../../GlobalState'
-import WeddingPlanItem from '../utils/weddingPlanItem/WeddingPlanItem'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
-
 
 function DetailProduct() {
     const params = useParams()
@@ -24,12 +21,10 @@ function DetailProduct() {
 
     useEffect(() =>{
         if(params.id){
-
             weddingPlans.forEach(weddingPlan => {
                 if(weddingPlan._id === params.id) setDetailWeddingPlan(weddingPlan)
             })
         }
-
         
         Aos.init({ duration: 2500 });
         
@@ -44,20 +39,16 @@ function DetailProduct() {
         <br></br>
         <br></br>
         <br></br>
-            {/* <div className="detail"> */}
-                <Product_card data-aos="fade-left">
+            <Product_card data-aos="fade-left">
                 
                 <img data-aos="fade-left" src={detailWeddingPlan.images_1.url} alt="" />
-
                 <h2 title={detailWeddingPlan.title}>{detailWeddingPlan.title}</h2>
-
                 <Box>
                     <Product_box>
                         <h2 title={detailWeddingPlan.vendor_1}>{detailWeddingPlan.vendor_1}</h2>
                         <h5>Service: {detailWeddingPlan.category_1}</h5>
                         <span>Rs {detailWeddingPlan.price_1} - Rs {detailWeddingPlan.max_price_1}</span>
                         <p>{detailWeddingPlan.description_1}</p>
-                        {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                         <h5>Address: {detailWeddingPlan.address_1}</h5>
                     </Product_box>
                     <Product_box>
@@ -65,7 +56,6 @@ function DetailProduct() {
                         <h5>Service: {detailWeddingPlan.category_2}</h5>
                         <span>Rs {detailWeddingPlan.price_2} - Rs {detailWeddingPlan.max_price_2}</span>
                         <p>{detailWeddingPlan.description_2}</p>
-                        {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                         <h5>Address: {detailWeddingPlan.address_2}</h5>
                     </Product_box>
                     { detailWeddingPlan.vendor_3 == null ? '' : 
@@ -74,92 +64,21 @@ function DetailProduct() {
                             <h5>Service: {detailWeddingPlan.category_3}</h5>
                             <span>Rs {detailWeddingPlan.price_3} - Rs {detailWeddingPlan.max_price_3}</span>
                             <p>{detailWeddingPlan.description_3}</p>
-                            {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                             <h5>Address: {detailWeddingPlan.address_3}</h5>
                         </Product_box>
                     }
                 </Box>
-
                 <br/>
-
                 <div className="row_btn">
-
                     <Link id="btn_buy" to="/wish_to_buy_wedding_plans" onClick={() => addWishToBuyWeddingPlans(detailWeddingPlan)}>
                                 Add to Wish List
                     </Link>
                     <Link id="btn_view" to="/confirmed_wedding_plans" onClick={() => addConfirmedWeddingPlans(detailWeddingPlan)}>
                                 Confirm Wedding Plan
                     </Link>
-
                 </div>
-
             </Product_card>
-     
-                {/* <div className="box-detail">
-                    <div className="row">
-                        <h2>{detailWeddingPlan.title}</h2>
-                        <h6>#id: {detailWeddingPlan.weddingPlan_id}</h6>
-                    </div>
-                    <LineLite1></LineLite1>
-                    <h4>Rs {detailWeddingPlan.price_1} - {detailWeddingPlan.max_price_1}</h4>
-                    <LineLite1></LineLite1>
-                    <h4>{detailWeddingPlan.address_1}</h4>
-                    <LineLite1></LineLite1>
-                    <Text5>{detailWeddingPlan.description_1}</Text5>
-                    <Line3></Line3> */}
-                    {/* <Text6>{detailProduct.content}</Text6>
-                    <Text1>{detailProduct.content_2}</Text1>
-                    <LineLite1></LineLite1>
-                    <div className="row">
-                    <Text2>{detailProduct.content_3}</Text2>
-                    <Text2>{detailProduct.content_4}</Text2>
-                    </div> */}
-                    {/* <Line3></Line3>
-                    <h4>Total Buyers: {detailWeddingPlan.sold}</h4>
-                    <Line2></Line2> */}
-                    {/* <h4>Contact: {detailProduct.contact_number_2} / {detailProduct.contact_number_1}</h4>
-                    <Line1></Line1> */}
-                    {/* <Text4>{detailWeddingPlan.address_1}</Text4> */}
-                    {/* <Text4>{detailProduct.address_line_2}</Text4>
-                    <Text4>{detailProduct.address_line_3}</Text4>
-                    <LineLite1></LineLite1> */}
-                    {/* <Link to="/cart" className="cart"
-                    onClick={() => addCart(detailProduct)}>
-                        Buy Now
-                    </Link>
-                    <Link to="/confirmed_vendors" className="cart"
-                    onClick={() => addConfirmedVendors(detailProduct)}>
-                        Confirmed Vendor
-                    </Link>
-                    <Link to="/wish_to_buy" className="cart"
-                    onClick={() => addWishToBuy(detailProduct)}>
-                        Wish To Buy
-                    </Link> */}
-                   {/* <br></br>
-                   <br></br>
-                   <br></br> */}
-                    {/* <LineLite1></LineLite1>
-                    <Text1>Other Services: {detailProduct.other_services}</Text1>
-                    <LineLite1></LineLite1> */}
-                   
-
-                {/* </div>
-            </div> */}
-
-            
-
-            {/* <div>
-                <h1>Related Wedding Plans</h1>
-                <div className="products">
-                    {
-                        weddingPlans.map(weddingPlan => {
-                            return weddingPlan.category === detailProduct.category 
-                                ? <ProductItem key={product._id} product={product} /> : null
-                        })
-                    }
-                </div>
-            </div> */}
-            <Footer/>
+        <Footer/>
         </>
     )
 };

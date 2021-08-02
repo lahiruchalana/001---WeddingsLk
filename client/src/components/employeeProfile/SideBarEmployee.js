@@ -10,13 +10,9 @@ import React, {useContext, useState, useEffect} from 'react'
 import { Button } from '@material-ui/core';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 
-
 const SideBarEmployee = (props) => {
-
-    
     const state = useContext(GlobalState)
     const [user] = state.userAPI.user
-
 
     return (
         <Container>
@@ -84,10 +80,7 @@ const SideBarEmployee = (props) => {
             { user.name == '' ? '' :
                 <CommunityButton>
                     <Button style={{
-                        // borderRadius: 35,
                         backgroundColor: "#f8961e"
-                        // padding: "18px 36px",
-                        // fontSize: "18px"
                         }}
                         data-aos="fade-left" size="large" variant="contained" color="gray" href="/user_profile" >
                         {user.name}

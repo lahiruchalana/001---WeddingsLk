@@ -5,54 +5,32 @@ import React, {useContext, useState, useEffect} from 'react'
 import {GlobalState} from '../../GlobalState'
 import Aos from "aos";
 import 'aos/dist/aos.css';
-import { Button } from '@material-ui/core';
-import UserItem from '../mainpages/utils/userItem/UserItem'
-
-
 
 function YourInfo() {
     const state = useContext(GlobalState)
-    const [cart] = state.userAPI.cart
-    const [wish_to_buy] = state.userAPI.wish_to_buy
-    const [confirmed_vendors] = state.userAPI.confirmed_vendors
-    const [wish_to_buy_wedding_plans] = state.userAPI.wish_to_buy_wedding_plans
-    const [confirmed_wedding_plans] = state.userAPI.confirmed_wedding_plans
-    const [token] = state.token
-    const [total, setTotal] = useState(0)
-    const addConfirmedVendors = state.userAPI.addConfirmedVendors
-    const addWishToBuy = state.userAPI.addWishToBuy
     const [user] = state.userAPI.user
     const [users, setUsers] = state.userInfoAPI.users
     const [totalCompletedWeddings, setTotalCompletedWeddings] = useState(0)
     const [totalProgressInWeddings, setTotalProgressInWeddings] = useState(0)
     const [totalTasksToDo, setTotalTasksToDo] = useState(0)
 
-
     useEffect(() =>{
         const getTotal = () =>{
             const totalCompletedWeddings = users.reduce((prev, user1) => {
                 return  user1.progress == '1' && user1.emp_name == user.name ? prev + 1 : prev + 0
             },0)
-
             setTotalCompletedWeddings(totalCompletedWeddings)
-
             const totalProgressInWeddings = users.reduce((prev, user1) => {
                 return  user1.progress == '2' && user1.emp_name == user.name ? prev + 1 : prev + 0
             },0)
-
             setTotalProgressInWeddings(totalProgressInWeddings)
-
             const totalTasksToDo = users.reduce((prev, user1) => {
                 return  user1.progress == '2' && user1.emp_name == user.name ? prev + 1 : prev + 0
             },0)
-
             setTotalTasksToDo(totalTasksToDo)
         }
-
         Aos.init({ duration: 2500 });
-
         getTotal()
-
     },[users])
 
 
@@ -66,9 +44,7 @@ function YourInfo() {
                 <br></br>
                 <br></br>
                 <br></br>
-
                 <Text4>Your Profile</Text4>
-                
                 <Product_card1 data-aos="fade-left">
                     <Text9>Task to do</Text9>
                     <Text10>8</Text10>
@@ -126,29 +102,6 @@ function YourInfo() {
                         })
                     }
                 </Product_card8>
-
-                {/* <Product_card4 data-aos="fade-left">
-                    <Text9>Your Employee</Text9>
-                    <Text10>{user.emp_name == null ? <>
-                    <Text11>Not Assigned Employee Yet</Text11>
-                    <Text12>Sometimes, It takes few hours to assign an employee for your wedding. Please stay with us.</Text12>
-                    </> : 
-                    user.emp_name }
-                    </Text10>
-                </Product_card4>
-                <Product_card4 data-aos="fade-left">
-                    <Text9>Your Employee Contact Number</Text9>
-                    <Text10>{user.emp_name == null ? <Text11>Not Assigned Employee Yet</Text11> : user.emp_contact }</Text10>
-                </Product_card4>                
-                <Product_card6 data-aos="fade-left">
-                    <Text9>Current Overall Progress of your Wedding</Text9>
-                    <Text10>{user.progress == '0' ? <Text11>Not Assigned an Employee</Text11> : 
-                        user.progress == '1' ? <Text11>Confirmed Vendor Services and Wedding Plans are Completed</Text11> :
-                            <Text11>Wedding is Progressed in</Text11>}</Text10>
-                </Product_card6>
-
-
-                <Text12>Sometimes, It takes few hours to assign an employee for your wedding. Please stay with us.</Text12> */}
                 <br></br>
                 <br></br>
                 <br></br>
