@@ -208,7 +208,7 @@ const Product_card = styled.div`
 
   width: 1000px;
   overflow: hidden;
-  height: 590px;
+  height: auto;
   padding: 15px;
   box-shadow: 0 0 15px #03045e;
   margin: 10px 100px;

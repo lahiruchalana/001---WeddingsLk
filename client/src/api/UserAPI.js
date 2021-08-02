@@ -2,10 +2,8 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function UserAPI(token) {
-/////////// If i use setUser and setName there should use another code ////////////////////
     const [name, setName] = useState([])
     const [user, setUser] = useState([])
-/////////// If i use setUser and setName there should use another code ////////////////////
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isEmployee, setIsEmployee] = useState(false)
@@ -15,9 +13,6 @@ function UserAPI(token) {
     const [wish_to_buy, setWishToBuy] = useState([])
     const [wish_to_buy_wedding_plans, setWishToBuyWeddingPlans] = useState([])
     const [confirmed_wedding_plans, setConfirmedWeddingPlans] = useState([])
-    // /////////////////////////////////////////////////////////
-    // const [user, setUser] = useState('')
-    // /////////////////////////////////////////////////////////
 
     useEffect(() =>{
         if(token){
@@ -26,12 +21,8 @@ function UserAPI(token) {
                     const res = await axios.get('/user/infor', {
                         headers: {Authorization: token}
                     })
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
                     setUser(res.data)
                     setName(res.data.name)
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
                     setIsLogged(true)
                     res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
                     res.data.role === 2 ? setIsEmployee(true) : setIsEmployee(false)
@@ -50,9 +41,7 @@ function UserAPI(token) {
             
         }
     },[token])
-
     
-
     const addCart = async (product) => {
         if(!isLogged) return alert("Please login to continue buying")
 
@@ -71,7 +60,6 @@ function UserAPI(token) {
             alert("This Vendor Service has been added to your Cart.")
         }
     }
-
 
     const addConfirmedVendors = async (product) => {
         if(!isLogged) return alert("Please login to continue buying")
@@ -92,7 +80,6 @@ function UserAPI(token) {
         }
     }
 
-
     const addWishToBuy = async (product) => {
         if(!isLogged) return alert("Please login to continue buying")
 
@@ -111,8 +98,6 @@ function UserAPI(token) {
             alert("This vendor Service has been added to Your Wish List and Check it on your Profile.")
         }
     }
-
-
 
     const addConfirmedWeddingPlans = async (weddingPlan) => {
         if(!isLogged) return alert("Please login to continue confirming the Wedding Plan")
@@ -133,7 +118,6 @@ function UserAPI(token) {
         }
     }
 
-
     const addWishToBuyWeddingPlans = async (weddingPlan) => {
         if(!isLogged) return alert("Please login to continue adding the Wedding Plan in Your Profile")
 
@@ -152,23 +136,10 @@ function UserAPI(token) {
             alert('This Wedding Plan has been added to Your Wish List and check it on "WL Wedding Plans" of Your Profile.')
         }
     }
-
-
     
     return {
-
-
-        
-        //////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////
         name: [name, setName],
         user: [user, setUser],
-        //////////////////////////////////////////////////////////////////////////////
-        //////////////////////////////////////////////////////////////////////////////
-
-
-        
-
         isLogged: [isLogged, setIsLogged],
         isAdmin: [isAdmin, setIsAdmin],
         isEmployee: [isEmployee, setIsEmployee],

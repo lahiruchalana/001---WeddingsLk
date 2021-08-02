@@ -68,7 +68,7 @@ function DetailProduct() {
                         {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                         <h5>Address: {detailWeddingPlan.address_2}</h5>
                     </Product_box>
-                    { detailWeddingPlan.vendor_3.title == null ? '' : 
+                    { detailWeddingPlan.vendor_3 == null ? '' : 
                         <Product_box>
                             <h2 title={detailWeddingPlan.vendor_3}>{detailWeddingPlan.vendor_3}</h2>
                             <h5>Service: {detailWeddingPlan.category_3}</h5>
@@ -247,7 +247,7 @@ const Product_card = styled.div`
 
   width: 1200px;
   overflow: hidden;
-  height: 590px;
+  height: auto;
   padding: 15px;
   box-shadow: 0 0 15px #03045e;
   margin-top: 30px;

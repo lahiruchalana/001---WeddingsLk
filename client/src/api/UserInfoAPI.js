@@ -4,7 +4,6 @@ import axios from 'axios'
 function UserInfoAPI() {
     const [users, setUsers] = useState([])
     const [callback, setCallback] = useState(false)
-    ////// category -> role karanna balanna
     const [category, setCategory] = useState('')
 
     const [sort, setSort] = useState('')
@@ -20,25 +19,21 @@ function UserInfoAPI() {
 
     useEffect(() =>{
         const getUsers = async () => {
-                ////// category -> role karanna balanna
             const res = await axios.get(`/user/users?limit=${page*9}&name[regex]=${search}`)
             setUsers(res.data.users)
             setResult(res.data.result)
         }
         getUsers()
-            ////// category -> role karanna balanna
     },[callback, category, sort, search, page])
     
     return {
         users: [users, setUsers],
         callback: [callback, setCallback],
-            ////// category -> role karanna balanna
         category: [category, setCategory],
         sort: [sort, setSort],
         search: [search, setSearch],
         page: [page, setPage],
         result: [result, setResult],
-
         emp_name: [emp_name, setEmpName],
         emp_contact: [emp_contact, setEmpContact],
         progress: [progress, setProgress],

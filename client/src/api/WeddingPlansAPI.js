@@ -5,10 +5,8 @@ import axios from 'axios'
 function WeddingPlansAPI() {
     const [weddingPlans, setWeddingPlans] = useState([])
     const [callback, setCallback] = useState(false)
-    // const [category, setCategory] = useState('')
     const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
-    // const [searchAddress, setSearchAddress] = useState('')
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
 
@@ -24,11 +22,9 @@ function WeddingPlansAPI() {
     return {
         weddingPlans: [weddingPlans, setWeddingPlans],
         callback: [callback, setCallback],
-        // category: [category, setCategory],
         sort: [sort, setSort],
         search: [search, setSearch],
         page: [page, setPage],
-        // searchAddress: [searchAddress, setSearchAddress],
         result: [result, setResult]
     }
 }
