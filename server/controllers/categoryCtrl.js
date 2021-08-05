@@ -14,6 +14,8 @@ export const getCategories = async(req, res) =>{
 export const createCategory = async (req, res) =>{
     try {
         // if user have role = 1 ---> admin
+        // if user have role = 0 ---> customer
+        // if user have role = 2 ---> employee
         // only admin can create , delete and update category
         const {name} = req.body;
         const category = await Category.findOne({name})

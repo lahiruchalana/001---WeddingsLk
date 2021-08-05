@@ -37,13 +37,6 @@ const WeddingPlans = () => {
     ];
 
 
-
-
-
-
-
-
-
     const state = useContext(GlobalState)
     const [weddingPlans, setWeddingPlans] = state.weddingPlansAPI.weddingPlans
     const [isAdmin] = state.userAPI.isAdmin
@@ -93,16 +86,6 @@ const WeddingPlans = () => {
     }
 
     if(loading) return <div><Loading /></div>
-
-
-
-
-
-
-
-
-
-
 
 
     return (

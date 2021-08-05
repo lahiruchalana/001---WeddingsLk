@@ -3,17 +3,10 @@
 import styled from "styled-components";
 import { Button } from '@material-ui/core';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
-
 import useStyles from './HeaderStyles';
-/// aos fade in up out ////
 import Aos from "aos";
 import 'aos/dist/aos.css';
-
-// hover sets
 import "../css/hover-min.css";
-
-    //// new (Start) ////////////////////////////////////
-
 import React, {useContext, useState, useEffect } from 'react'
 import {GlobalState} from '../../GlobalState'
 import Menu from './icon/menu.svg'
@@ -24,18 +17,7 @@ import axios from 'axios'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////// @export from index.css ///////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    //// new (Start) ////////////////////////////////////
-
-
-
 const Header = () => {
-
-    //// new (Start) ////////////////////////////////////
-
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
@@ -84,13 +66,9 @@ const Header = () => {
         )
     }
 
-
     const styleMenu = {
         left: menu ? 0 : "-100%"
     }
-
-    //// new (End) ////////////////////////////////////
-
 
 
     const imagesList = [
@@ -104,35 +82,6 @@ const Header = () => {
     useEffect(() => {
         Aos.init({ duration: 2500 });
     }, []);
-
-    // const classes = useStyles();
-    // const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    // const dispatch = useDispatch();
-    // const history = useHistory();
-    // const location = useLocation();
-
-
-    // useEffect(() => {
-    //     const token = user?.token;
-
-    //     if (token) {
-    //         const decodedToken = decode(token);
-
-    //         if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-    //     }
-
-    //     setUser(JSON.parse(localStorage.getItem('profile')));
-    // }, [location]);
-
-
-    // const logout = () => {
-    //     // dispatch({ type: actionType.LOGOUT });
-    //     dispatch({ type: "LOGOUT" });
-
-    //     history.push('/');
-
-    //     setUser(null);
-    // };
 
     return (
         <Content>

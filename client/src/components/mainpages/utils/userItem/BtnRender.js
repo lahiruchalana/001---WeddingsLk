@@ -1,21 +1,12 @@
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {GlobalState} from '../../../../GlobalState'
-    ///////////////// not completed ///////////////////
-        ///////////////// not completed ///////////////////
-            ///////////////// not completed ///////////////////
-                ///////////////// not completed ///////////////////
-                    ///////////////// not completed ///////////////////
-                        ///////////////// not completed ///////////////////
-                            ///////////////// not completed ///////////////////
-                            ///////////////// not completed ///////////////////
-                                ///////////////// not completed ///////////////////
+
 function BtnRender({product, deleteProduct}) {
     const state = useContext(GlobalState)
     const [isAdmin] = state.userAPI.isAdmin
     const addCart = state.userAPI.addCart
 
-    ///////////////// not completed ///////////////////
     return (
         <div className="row_btn">
             {

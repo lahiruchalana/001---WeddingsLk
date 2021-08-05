@@ -2,13 +2,11 @@ import React, {useContext, useState, useEffect} from 'react'
 import styled from "styled-components";
 import {GlobalState} from '../../GlobalState'
 import axios from 'axios'
-// import PaypalButton from '../../userProfile/PaypalButton'
 import Button from '@material-ui/core/Button';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
 import {Link} from 'react-router-dom'
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
@@ -21,24 +19,9 @@ function ConfirmedWeddingPlans() {
     const [total, setTotal] = useState(0)
     const addConfirmedWeddingPlans = state.userAPI.addConfirmedWeddingPlans
 
-
     useEffect(() =>{
         Aos.init({ duration: 2500 });
     },[])
-
-    //////////////////get total of prices of [cart] //////////////////
-    // useEffect(() =>{
-    //     const getTotal = () =>{
-    //         const total = confirmed_vendors.reduce((prev, item) => {
-    //             return prev + (item.price * item.quantity)
-    //         },0)
-
-    //         setTotal(total)
-    //     }
-
-    //     getTotal()
-
-    // },[cart])
 
     const addToWishToBuyWeddingPlans = async (wish_to_buy_wedding_plans) =>{
         await axios.patch('/user/addwish_to_buy_wedding_plans', {wish_to_buy_wedding_plans}, {
@@ -46,28 +29,6 @@ function ConfirmedWeddingPlans() {
         })
     }
 
-     ////////////////// using this i can choose multiple quantity in one products /////////
-    // const increment = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity += 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
-
-    // const decrement = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
     ///////////// remove vendors /////////////
     const removeWishToBuyWeddingPlans = id =>{
         if(window.confirm("Do you want to Remove this Wedding Plan from Wish List?")){
@@ -81,19 +42,6 @@ function ConfirmedWeddingPlans() {
             addToWishToBuyWeddingPlans(wish_to_buy_wedding_plans)
         }
     }
-     /////////////////// about payment /////////////////
-    // const tranSuccess = async(payment) => {
-    //     const {paymentID, address} = payment;
-
-    //     await axios.post('/api/payment', {cart, paymentID, address}, {
-    //         headers: {Authorization: token}
-    //     })
-
-    //     setCart([])
-    //     addToCart([])
-    //     alert("You have successfully placed an order.")
-    // }
-
 
     if(wish_to_buy_wedding_plans.length === 0) 
         return (<Content>
@@ -123,20 +71,15 @@ function ConfirmedWeddingPlans() {
                 wish_to_buy_wedding_plans.map(weddingPlan => (
                     <div data-aos="fade-left"  key={weddingPlan._id}>
                         <Product_card>
-
                             <h2 data-aos="fade-left"  title={weddingPlan.title}>{weddingPlan.title}</h2>
-            
                             <img data-aos="fade-left" src={weddingPlan.images_1.url} alt="" />
-
                             
-
                             <Box>
                                 <Product_box data-aos="fade-left" >
                                     <h2 title={weddingPlan.vendor_1}>{weddingPlan.vendor_1}</h2>
                                     <h5>Service: {weddingPlan.category_1}</h5>
                                     <span>Rs {weddingPlan.price_1} - Rs {weddingPlan.max_price_1}</span>
                                     <p>{weddingPlan.description_1}</p>
-                                    {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                                     <h5>Address: {weddingPlan.address_1}</h5>
                                 </Product_box>
                                 <Product_box data-aos="fade-left" >
@@ -144,7 +87,6 @@ function ConfirmedWeddingPlans() {
                                     <h5>Service: {weddingPlan.category_2}</h5>
                                     <span>Rs {weddingPlan.price_2} - Rs {weddingPlan.max_price_2}</span>
                                     <p>{weddingPlan.description_2}</p>
-                                    {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                                     <h5>Address: {weddingPlan.address_2}</h5>
                                 </Product_box>
                                 { weddingPlan.vendor_3 == '' ? '' :
@@ -153,7 +95,6 @@ function ConfirmedWeddingPlans() {
                                         <h5>Service: {weddingPlan.category_3}</h5>
                                         <span>Rs {weddingPlan.price_3} - Rs {weddingPlan.max_price_3}</span>
                                         <p>{weddingPlan.description_3}</p>
-                                        {/* <h5>No: {weddingPlan.contact_number_1}</h5> */}
                                         <h5>Address: {weddingPlan.address_3}</h5>
                                     </Product_box>
                                 }
@@ -176,17 +117,6 @@ function ConfirmedWeddingPlans() {
                 ))
             }
 
-            {/* <div className="total">
-                <br></br>
-                <h1>Total: Rs {total}</h1>
-                
-                <h5>Note: this is the minimum price of your cart</h5>
-                <br></br>
-                <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} />
-                <br></br>
-            </div> */}
         </div>
         </Container>
         <br></br>

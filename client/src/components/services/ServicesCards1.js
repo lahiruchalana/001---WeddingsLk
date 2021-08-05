@@ -19,8 +19,8 @@ function ServicesCards1({ id, serviceType, image}) {
 
 
 
-////////////////////////////////  Image size -        width: 1300px;
-///////////////////////////////                       height: 300px;
+////  Image size -    width: 1300px;
+////                  height: 300px;
 
 
 

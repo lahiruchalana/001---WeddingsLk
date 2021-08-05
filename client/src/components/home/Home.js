@@ -43,19 +43,9 @@ const Home = (props) => {
 
     return (
         <Container>
-                  <Header/>
-                  {/* <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br>
-                  <br></br> */}
-                  {/*<Headers />  */}
-
+            <Header/>
             <Content>
-
-
                 {/* Strat of background image for home */}
-                {/* Done */}
                 <AnimatedImages
                     colors={imagesList}
                     duration={3}
@@ -68,7 +58,6 @@ const Home = (props) => {
                     <h3>- delay: 1s</h3>
                     <h3>- transition type: ease-out</h3>
                 </div> */}
-
                     <BgImageHome src="/images/BgImageHome.jpg" />
 
                 </AnimatedImages>

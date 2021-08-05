@@ -1,19 +1,13 @@
 import styled from 'styled-components';
-// import BtnRender from './BtnRender'
-// import Button from '@material-ui/core/Button';
 import React, {useState, useContext, useEffect} from 'react'
 import {GlobalState} from '../../../../GlobalState'
 import axios from 'axios'
 import { Button } from '@material-ui/core';
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
 function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
-
     const state = useContext(GlobalState)
-    // const [categories] = state.categoriesAPI.categories
-    // const [emp_name, setEmpName] = useState('')
     const [emp_name, setEmpName] = state.userInfoAPI.emp_name
     const [emp_contact, setEmpContact] = state.userInfoAPI.emp_contact
     const [progress, setProgress] = state.userInfoAPI.progress
@@ -21,9 +15,6 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
     const [progress3, setProgress3] = state.userInfoAPI.progress3
     const [token] = state.token
     const [callback, setCallback] = state.userInfoAPI.callback
-    // const [onEdit, setOnEdit] = useState(false)
-    // const [id, setID] = useState('')
-    // const [id] = useState('')
 
     useEffect(() =>{
         Aos.init({ duration: 2500 });
@@ -37,9 +28,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                 headers: {Authorization: token}
             })
             alert(res.data.msg)
-            
-                
-            // setOnEdit(false)
+
             setEmpName('')
 
             setEmpContact('')
@@ -90,19 +79,6 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
         }
     }
 
-    // const updateProgress = async (_id, user.progress) =>{
-            
-    //         setEmpName(emp_name)
-    //         setOnEdit(true)
-    // }
-   
-
-    // const editUsers = async (id, emp_name) =>{
-    //     setID(id)
-    //     setEmpName(emp_name)
-    //     setOnEdit(true)
-    // }
-
     return (
         <div>
             { user.role == 1 || user.role == 2 ? '' : 
@@ -112,16 +88,10 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
             
                     <div data-aos="fade-left" className="product_box">
                         <TextName data-aos="fade-left" name={user.name}>{user.name}</TextName>
-                        {/* ///////////// add here phone number for role (role -> phone number)/////////// */}
                         <h5>{user.email}</h5>
                         <h5>0{user.contactFirst}</h5>
                         <h5>0{user.contactSecond}</h5>
-                        {/* <h6>{user.updatedAt}</h6> */}
                         <br></br>
-                        {/* ////////////////////List down a cart with users vendor prodoucts  ( SEE DOWN )/////////////////////// */}
-                        {/* /////////////// ( SEE DOWN ) //////////////// */}
-
-                    
                         <div>{user.confirmed_vendors.map(confirmed_vendors => {
                             return( 
                             <>
@@ -132,10 +102,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                     { user.progress == '0' ? 
                                             <ButtonBox>
                                                 <Button style={{
-                                                    // borderRadius: 35,
                                                     backgroundColor: "#bf0603"
-                                                    // padding: "18px 36px",
-                                                    // fontSize: "18px"
                                                     }}  data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                             Not Assigned
                                                 </Button>
@@ -143,10 +110,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                             :  user.progress == '1' ? 
                                                 <ButtonBox>
                                                     <Button style={{
-                                                        // borderRadius: 35,
                                                         backgroundColor: "#31e000"
-                                                        // padding: "18px 36px",
-                                                        // fontSize: "18px"
                                                         }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                 Completed
                                                     </Button>
@@ -154,10 +118,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                                 : 
                                                     <ButtonBox>
                                                         <Button style={{
-                                                            // borderRadius: 35,
                                                             backgroundColor: "#ffee32"
-                                                            // padding: "18px 36px",
-                                                            // fontSize: "18px"
                                                             }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                     Work in Progress
                                                         </Button>
@@ -179,10 +140,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                     { user.progress == '0' ? 
                                             <ButtonBox>
                                                 <Button style={{
-                                                    // borderRadius: 35,
                                                     backgroundColor: "#bf0603"
-                                                    // padding: "18px 36px",
-                                                    // fontSize: "18px"
                                                     }}  data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                             Not Assigned
                                                 </Button>
@@ -190,10 +148,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                             :  user.progress == '1' ? 
                                                 <ButtonBox>
                                                     <Button style={{
-                                                        // borderRadius: 35,
                                                         backgroundColor: "#31e000"
-                                                        // padding: "18px 36px",
-                                                        // fontSize: "18px"
                                                         }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                 Completed
                                                     </Button>
@@ -201,10 +156,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                                 : 
                                                     <ButtonBox>
                                                         <Button style={{
-                                                            // borderRadius: 35,
                                                             backgroundColor: "#ffee32"
-                                                            // padding: "18px 36px",
-                                                            // fontSize: "18px"
                                                             }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                     Work in Progress
                                                         </Button>
@@ -220,10 +172,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                     { user.progress == '0' ? 
                                             <ButtonBox>
                                                 <Button style={{
-                                                    // borderRadius: 35,
                                                     backgroundColor: "#bf0603"
-                                                    // padding: "18px 36px",
-                                                    // fontSize: "18px"
                                                     }}  data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                             Not Assigned
                                                 </Button>
@@ -231,10 +180,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                             :  user.progress == '1' ? 
                                                 <ButtonBox>
                                                     <Button style={{
-                                                        // borderRadius: 35,
                                                         backgroundColor: "#31e000"
-                                                        // padding: "18px 36px",
-                                                        // fontSize: "18px"
                                                         }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                 Completed
                                                     </Button>
@@ -242,10 +188,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                                 : 
                                                     <ButtonBox>
                                                         <Button style={{
-                                                            // borderRadius: 35,
                                                             backgroundColor: "#ffee32"
-                                                            // padding: "18px 36px",
-                                                            // fontSize: "18px"
                                                             }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                     Work in Progress
                                                         </Button>
@@ -262,10 +205,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                         { user.progress == '0' ? 
                                             <ButtonBox>
                                                 <Button style={{
-                                                    // borderRadius: 35,
                                                     backgroundColor: "#bf0603"
-                                                    // padding: "18px 36px",
-                                                    // fontSize: "18px"
                                                     }}  data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                             Not Assigned
                                                 </Button>
@@ -273,10 +213,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                             :  user.progress == '1' ? 
                                                 <ButtonBox>
                                                     <Button style={{
-                                                        // borderRadius: 35,
                                                         backgroundColor: "#31e000"
-                                                        // padding: "18px 36px",
-                                                        // fontSize: "18px"
                                                         }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                 Completed
                                                     </Button>
@@ -284,10 +221,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                                 : 
                                                     <ButtonBox>
                                                         <Button style={{
-                                                            // borderRadius: 35,
                                                             backgroundColor: "#ffee32"
-                                                            // padding: "18px 36px",
-                                                            // fontSize: "18px"
                                                             }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                                     Work in Progress
                                                         </Button>
@@ -316,10 +250,6 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
 
                                 <br/>
                                 
-
-                                {/* <button type="submit">Assigne</button>
-                            </form>
-                            <form onSubmit={updateUsers}> */}
                                 <label htmlFor="cate" >Employee Contact Number</label>
                                 <div></div>
                                 <input type="number" name="category" value={emp_contact} required
@@ -328,10 +258,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                 <br/>
                                 
                                 <Button style={{
-                                    // borderRadius: 35,
                                     backgroundColor: "#52b788"
-                                    // padding: "18px 36px",
-                                    // fontSize: "18px"
                                     }}
                                     data-aos="fade-left" size="large" variant="contained" color="gray"   type="submit">
                                         Assigne Employee
@@ -346,10 +273,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                         { user.progress == '0' ? 
                             <ButtonBox>
                                 <Button style={{
-                                    // borderRadius: 35,
                                     backgroundColor: "#bf0603"
-                                    // padding: "18px 36px",
-                                    // fontSize: "18px"
                                     }}  data-aos="fade-left" variant="contained" color="secondary" color="white">
                                             Still Not Assigned a Employee
                                 </Button>
@@ -357,10 +281,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                             :  user.progress == '1' ? 
                                 <ButtonBox>
                                     <Button style={{
-                                        // borderRadius: 35,
                                         backgroundColor: "#31e000"
-                                        // padding: "18px 36px",
-                                        // fontSize: "18px"
                                         }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                 The wedding was successfully Completed
                                     </Button>
@@ -368,10 +289,7 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
                                 : 
                                     <ButtonBox>
                                         <Button style={{
-                                            // borderRadius: 35,
                                             backgroundColor: "#ffee32"
-                                            // padding: "18px 36px",
-                                            // fontSize: "18px"
                                             }} data-aos="fade-left" variant="contained" color="secondary" color="white">
                                                     Work in Progress. Employee is {user.emp_name}
                                         </Button>
@@ -426,20 +344,6 @@ function UserItem({user, isAdmin, deleteProduct, handleCheck}) {
 
                         <Line1></Line1>
                         <br></br>
-                        {/* <Text5>{user.progress}</Text5> */}
-
-
-                        
-
-
-                        {/* <div className="row" key={user._id}>
-                            <div>
-                                <button onClick={() => editUsers(user._id, user.emp_name)}>Edit</button>
-                                <button onClick={() => deleteCategory(user._id)}>Delete</button>
-                            </div>
-                        </div> */}
-
-
                     </div>
                 </Product_card>
             }

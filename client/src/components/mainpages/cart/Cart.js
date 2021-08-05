@@ -52,7 +52,6 @@ function Cart() {
         })
     }
 
-     ////////////////// using this i can choose multiple quantity in one products /////////
     const increment = (id) =>{
         cart.forEach(item => {
             if(item._id === id){
@@ -112,7 +111,6 @@ function Cart() {
             <br></br>
         <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Cart</h2>
         </Content>);
- 
 
     return (
         <div>
@@ -157,17 +155,7 @@ function Cart() {
                     <Text4>{product.address_line_2}</Text4>
                     <Text4>{product.address_line_3}</Text4>
                     <LineLite1></LineLite1>
-                            {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
                             <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
-
-                            {/* <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div> */}
-
-
-                            
                             <div className="delete" 
                                 onClick={() => removeProduct(product._id)}>
                                 <Button variant="contained" color="secondary">

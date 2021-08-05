@@ -47,9 +47,8 @@ mongoose.connection.once('open', () => (
     console.log('DB Connected')
 ))
 
-////////////////////////////////for what this is?//////////////////
 mongoose.set('useFindAndModify', false);
-///////////////////////////////////////////////////////////////////
+
 
 
 // middlewares
@@ -73,7 +72,7 @@ app.use('/api', paymentRouter);
 app.use('/api', feedBackRouter);
 
 
-/////end of Router setting (often what we change here)
+/////end of Router setting 
 
 const URI = process.env.MONGODB_URL
 

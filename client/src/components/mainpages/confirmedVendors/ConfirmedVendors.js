@@ -7,13 +7,9 @@ import Button from '@material-ui/core/Button';
 import Header from '../../header/Header';
 import Footer from '../../footer/Footer';
 import SideBarUser from '../../userProfile/SideBarUser';
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
-
-
 import ReactStars from "react-rating-stars-component";
-
 
 function ConfirmedVendors() {
     const state = useContext(GlobalState)
@@ -22,7 +18,7 @@ function ConfirmedVendors() {
     const [token] = state.token
     const [total, setTotal] = useState(0)
 
-    //////////////////get total of prices of [cart] //////////////////
+    //////////////////get total of prices of [confirmed vendors] //////////////////
     useEffect(() =>{
         const getTotal = () =>{
             const total = confirmed_vendors.reduce((prev, item) => {
@@ -33,7 +29,6 @@ function ConfirmedVendors() {
         }
 
         Aos.init({ duration: 2500 });
-
 
         getTotal()
 
@@ -46,37 +41,9 @@ function ConfirmedVendors() {
     }
 
     const ratingChanged = (newRating) => {
-        // const product = products.findOneById()
-        // const res = axios.put(`/api/products/${product._id}/rating`, {rating: newRating},{
-        //     headers: {Authorization: token}
-        // })
-        
-        // setRating(newRating);
         console.log(newRating);
       };
 
-     ////////////////// using this i can choose multiple quantity in one products /////////
-    // const increment = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity += 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
-
-    // const decrement = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
     ///////////// remove vendors /////////////
     const removeProduct = id =>{
         if(window.confirm("Do you want to Remove this Vendor?")){
@@ -90,18 +57,7 @@ function ConfirmedVendors() {
             addToConfirmedVendors(confirmed_vendors)
         }
     }
-     /////////////////// about payment /////////////////
-    // const tranSuccess = async(payment) => {
-    //     const {paymentID, address} = payment;
-
-    //     await axios.post('/api/payment', {cart, paymentID, address}, {
-    //         headers: {Authorization: token}
-    //     })
-
-    //     setCart([])
-    //     addToCart([])
-    //     alert("You have successfully placed an order.")
-    // }
+    ////////////////// Add payment method /////////////////
 
 
     if(confirmed_vendors.length === 0) 
@@ -121,90 +77,69 @@ function ConfirmedVendors() {
         <div>
         <Header/>
         <Container>
-        <div >
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <Text1 data-aos="fade-left">Your Confirmed Vendor Services</Text1>
-            {
-                confirmed_vendors.map(product => (
-                    <div data-aos="fade-left" className="detail cart" key={product._id}>
-                    <img data-aos="fade-left" src={product.images.url} alt="" />
-                    
-                    <div className="box-detail">
-                    <h2 data-aos="fade-left">{product.title}</h2>
-                    <LineLite1></LineLite1>
-                    <h4>Rs {product.price} - {product.max_price}</h4>
-                    <LineLite1></LineLite1>
-                    <h4>{product.address_line_1}</h4>
-                    <LineLite1></LineLite1>
-                    <Text5>{product.description}</Text5>
-                    <Line3></Line3>
-                    <Text6>{product.content}</Text6>
-                    <Line3></Line3>
-                    <Text5>{product.content_2}</Text5>
-                    <LineLite1></LineLite1>
-                    <div className="row">
-                    <Text7>{product.content_3}</Text7>
-                    <Text7>{product.content_4}</Text7>
-                    </div>
-                    <LineLite1></LineLite1>
-                        <Text2>{product.content_5}</Text2>
-                    <Line3></Line3>
-                    <h4>Total Buyers: 4</h4>
-                    <Line2></Line2>
-                    <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
-                    <Line1></Line1>
-                    <Text4>{product.address_line_1}</Text4>
-                    <Text4>{product.address_line_2}</Text4>
-                    <Text4>{product.address_line_3}</Text4>
-                    <LineLite1></LineLite1>
+            <div >
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <Text1 data-aos="fade-left">Your Confirmed Vendor Services</Text1>
+                {
+                    confirmed_vendors.map(product => (
+                        <div data-aos="fade-left" className="detail cart" key={product._id}>
+                        <img data-aos="fade-left" src={product.images.url} alt="" />
+                        
+                        <div className="box-detail">
+                        <h2 data-aos="fade-left">{product.title}</h2>
+                        <LineLite1></LineLite1>
+                        <h4>Rs {product.price} - {product.max_price}</h4>
+                        <LineLite1></LineLite1>
+                        <h4>{product.address_line_1}</h4>
+                        <LineLite1></LineLite1>
+                        <Text5>{product.description}</Text5>
+                        <Line3></Line3>
+                        <Text6>{product.content}</Text6>
+                        <Line3></Line3>
+                        <Text5>{product.content_2}</Text5>
+                        <LineLite1></LineLite1>
+                        <div className="row">
+                        <Text7>{product.content_3}</Text7>
+                        <Text7>{product.content_4}</Text7>
+                        </div>
+                        <LineLite1></LineLite1>
+                            <Text2>{product.content_5}</Text2>
+                        <Line3></Line3>
+                        <h4>Total Buyers: 4</h4>
+                        <Line2></Line2>
+                        <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
+                        <Line1></Line1>
+                        <Text4>{product.address_line_1}</Text4>
+                        <Text4>{product.address_line_2}</Text4>
+                        <Text4>{product.address_line_3}</Text4>
+                        <LineLite1></LineLite1>
 
-                    <h4>Rate {product.title} Service</h4>
-                    <Star>
-                        <ReactStars 
-                            count={6}
-                            onChange={ratingChanged}
-                            size={28}
-                            activeColor="#ffd700"
-                        />
-                    </Star>
-                    <LineLite1></LineLite1>
-
-
-                            {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
-                            <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
-
-                            {/* <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div> */}
-                            
-                            <div className="delete" 
-                            onClick={() => removeProduct(product._id)}>
-                                <Button data-aos="fade-left" variant="contained" color="secondary">
-                                Remove Vendor
-                                </Button>
+                        <h4>Rate {product.title} Service</h4>
+                        <Star>
+                            <ReactStars 
+                                count={6}
+                                onChange={ratingChanged}
+                                size={28}
+                                activeColor="#ffd700"
+                            />
+                        </Star>
+                        <LineLite1></LineLite1>
+                                <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
+                                <div className="delete" 
+                                onClick={() => removeProduct(product._id)}>
+                                    <Button data-aos="fade-left" variant="contained" color="secondary">
+                                    Remove Vendor
+                                    </Button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
 
-            {/* <div className="total">
-                <br></br>
-                <h1>Total: Rs {total}</h1>
-                
-                <h5>Note: this is the minimum price of your cart</h5>
-                <br></br>
-                <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} />
-                <br></br>
-            </div> */}
-        </div>
+            </div>
         </Container>
         <Footer/>
         </div>

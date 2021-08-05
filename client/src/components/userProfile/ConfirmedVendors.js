@@ -2,17 +2,12 @@ import React, {useContext, useState, useEffect} from 'react'
 import styled from "styled-components";
 import {GlobalState} from '../../GlobalState'
 import axios from 'axios'
-// import PaypalButton from '../../userProfile/PaypalButton'
 import Button from '@material-ui/core/Button';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
-
-// import StarRatingComponent from 'react-star-rating-component';
-
 import ReactStars from "react-rating-stars-component";
 
 
@@ -26,31 +21,11 @@ function ConfirmedVendors() {
 
     const [rating, setRating] = state.productsAPI.rating
     const [callback, setCallback] = state.productsAPI.callback
-    // const [callback, setCallback] = state.productsAPI.callback
 
 
     const ratingChanged = (newRating) => {
-        // const product = products.findOneById()
-        // const res = axios.put(`/api/products/${product._id}/rating`, {rating: newRating},{
-        //     headers: {Authorization: token}
-        // })
-        
-        // setRating(newRating);
         console.log(newRating);
-      };
-       
-
-    // const onStarClick = (rating, prevValue, id) => {
-
-    //     const res = axios.put(`/api/products/${id}/rating`, {rating: rating},{
-    //         headers: {Authorization: token}
-    //     })
-    //     // alert(res.data.msg)
-
-    //     setRating({rating: rating});
-    //     setCallback(!callback)
-    // }
-
+    };
 
     //////////////////get total of prices of [cart] //////////////////
     useEffect(() =>{
@@ -146,15 +121,6 @@ function ConfirmedVendors() {
                     <Text4>{product.address_line_3}</Text4>
                     <LineLite1></LineLite1>
 
-                    {/* <div>
-                        <h2>Rating from state: {product.rating}</h2>
-                        <StarRatingComponent 
-                        name="rate1" 
-                        starCount={10}
-                        value={rating}
-                        onStarClick={() => onStarClick(rating, product.rating, product._id)}
-                        />
-                    </div> */}
                     <h4>Rate {product.title} Service</h4>
                     <Star>
                         <ReactStars 
@@ -165,15 +131,8 @@ function ConfirmedVendors() {
                         />
                     </Star>
                     <LineLite1></LineLite1>
-                            {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
                             <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
 
-                            {/* <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div> */}
-                            
                             <div className="delete" 
                             onClick={() => removeConfirmedVendor(product._id)}>
                                 <Button variant="contained" color="secondary">

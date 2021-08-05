@@ -32,24 +32,11 @@ const Services = (props) => {
         'url("https://image.freepik.com/free-photo/valentines-day-marry-me-wedding-engagement-ring-box-with-red-rose-gift_114579-402.jpg")'
     ];
 
-
-    // mekata images ps eke dala ekama size ekakakata ganna
-
-    // first - create 300px * 300px kotuwak
-
-    // second ekata upload karanna photos
-
-    // services wenas wenne naha normally
-
-
-
-
     return (
         <Container>
             <Header/>
             <Content>
                 {/* ////////////////////////// Start of common page top section //////////////////// */}
-
                 <AnimatedImages
                     colors={imagesList}
                     duration={2}

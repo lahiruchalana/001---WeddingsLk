@@ -2,7 +2,6 @@ import React, {useContext, useState, useEffect} from 'react'
 import styled from "styled-components";
 import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
-// import PaypalButton from '../../userProfile/PaypalButton'
 import Button from '@material-ui/core/Button';
 import Header from '../../header/Header';
 import Footer from '../../footer/Footer';
@@ -32,9 +31,7 @@ function WishToBuy() {
             setTotal(total)
         }
 
-
         Aos.init({ duration: 2500 });
-
 
         getTotal()
 
@@ -46,28 +43,6 @@ function WishToBuy() {
         })
     }
 
-     ////////////////// using this i can choose multiple quantity in one products /////////
-    // const increment = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity += 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
-
-    // const decrement = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
     ///////////// remove vendors /////////////
     const removeWishToBuy = id =>{
         if(window.confirm("Do you want to Remove this Vendor?")){
@@ -81,19 +56,6 @@ function WishToBuy() {
             addToWishToBuy(wish_to_buy)
         }
     }
-     /////////////////// about payment /////////////////
-    // const tranSuccess = async(payment) => {
-    //     const {paymentID, address} = payment;
-
-    //     await axios.post('/api/payment', {cart, paymentID, address}, {
-    //         headers: {Authorization: token}
-    //     })
-
-    //     setCart([])
-    //     addToCart([])
-    //     alert("You have successfully placed an order.")
-    // }
-
 
     if(wish_to_buy.length === 0) 
         return (<Content>
@@ -106,97 +68,73 @@ function WishToBuy() {
             <br></br>
         <h2 data-aos="fade-left" style={{marginLeft: "250px", textAlign: "center", fontSize: "40px"}}>There is no any Services of Vendors in the Wish to Buy</h2>
         </Content>);
- 
 
     return (
         <div>
         <Header/>
         <Container>
-        <div >
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <Text1 data-aos="fade-left" >Your Wish To Buy Vendor Services</Text1>
-            {
-                wish_to_buy.map(product => (
-                    <div data-aos="fade-left" className="detail cart" key={product._id}>
-                    <img data-aos="fade-left" src={product.images.url} alt="" />
-                    
-                    <div className="box-detail">
-                    <h2>{product.title}</h2>
-                    <LineLite1></LineLite1>
-                    <h4>Rs {product.price} - {product.max_price}</h4>
-                    <LineLite1></LineLite1>
-                    <h4>{product.address_line_1}</h4>
-                    <LineLite1></LineLite1>
-                    <Text5>{product.description}</Text5>
-                    <Line3></Line3>
-                    <Text6>{product.content}</Text6>
-                    <Line3></Line3>
-                    <Text5>{product.content_2}</Text5>
-                    <LineLite1></LineLite1>
-                    <div className="row">
-                    <Text7>{product.content_3}</Text7>
-                    <Text7>{product.content_4}</Text7>
-                    </div>
-                    <LineLite1></LineLite1>
-                        <Text2>{product.content_5}</Text2>
-                    <Line3></Line3>
-                    <h4>Total Buyers: 4</h4>
-                    <Line2></Line2>
-                    <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
-                    <Line1></Line1>
-                    <Text4>{product.address_line_1}</Text4>
-                    <Text4>{product.address_line_2}</Text4>
-                    <Text4>{product.address_line_3}</Text4>
-                    <LineLite1></LineLite1>
-                            {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
-                            <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
+            <div >
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <Text1 data-aos="fade-left" >Your Wish To Buy Vendor Services</Text1>
+                {
+                    wish_to_buy.map(product => (
+                        <div data-aos="fade-left" className="detail cart" key={product._id}>
+                        <img data-aos="fade-left" src={product.images.url} alt="" />
+                        
+                        <div className="box-detail">
+                        <h2>{product.title}</h2>
+                        <LineLite1></LineLite1>
+                        <h4>Rs {product.price} - {product.max_price}</h4>
+                        <LineLite1></LineLite1>
+                        <h4>{product.address_line_1}</h4>
+                        <LineLite1></LineLite1>
+                        <Text5>{product.description}</Text5>
+                        <Line3></Line3>
+                        <Text6>{product.content}</Text6>
+                        <Line3></Line3>
+                        <Text5>{product.content_2}</Text5>
+                        <LineLite1></LineLite1>
+                        <div className="row">
+                        <Text7>{product.content_3}</Text7>
+                        <Text7>{product.content_4}</Text7>
+                        </div>
+                        <LineLite1></LineLite1>
+                            <Text2>{product.content_5}</Text2>
+                        <Line3></Line3>
+                        <h4>Total Buyers: 4</h4>
+                        <Line2></Line2>
+                        <h4>Contact: {product.contact_number_2} / {product.contact_number_1}</h4>
+                        <Line1></Line1>
+                        <Text4>{product.address_line_1}</Text4>
+                        <Text4>{product.address_line_2}</Text4>
+                        <Text4>{product.address_line_3}</Text4>
+                        <LineLite1></LineLite1>
+                                <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
 
-                            {/* <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div> */}
-                            
-                            <div className="delete" 
-                            onClick={() => removeWishToBuy(product._id)}>
-                                <Button data-aos="fade-left" variant="contained" color="secondary">
-                                Remove Vendor
-                                </Button>
-                            </div>
-                            <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
+                                <div className="delete" 
+                                onClick={() => removeWishToBuy(product._id)}>
+                                    <Button data-aos="fade-left" variant="contained" color="secondary">
+                                    Remove Vendor
+                                    </Button>
+                                </div>
+                                <Text8>After Confirmed the Vendor, WeddingsLK Employee will Contact You Soon. If You Need this Vendor Service Just Click on Confirm Vendor</Text8>
 
-                            <div className="row_btn">
+                                <div className="row_btn">
 
-                                <Link data-aos="fade-left" to="/confirmed_vendors" className="cart"
-                                onClick={() => addConfirmedVendors(product)}>
-                                    Confirmed Vendor
-                                </Link>
-                                {/* <Link to="/wish_to_buy" className="cart"
-                                onClick={() => addWishToBuy(product)}>
-                                    Wish To Buy
-                                </Link> */}
+                                    <Link data-aos="fade-left" to="/confirmed_vendors" className="cart"
+                                    onClick={() => addConfirmedVendors(product)}>
+                                        Confirmed Vendor
+                                    </Link>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))
-            }
-
-            {/* <div className="total">
-                <br></br>
-                <h1>Total: Rs {total}</h1>
-                
-                <h5>Note: this is the minimum price of your cart</h5>
-                <br></br>
-                <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} />
-                <br></br>
-            </div> */}
-        </div>
+                    ))
+                }
+            </div>
         </Container>
         <Footer/>
         </div>

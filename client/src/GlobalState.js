@@ -39,9 +39,7 @@ export const DataProvider = ({children}) =>{
         categoriesAPI: CategoriesAPI(),
         userInfoAPI: UserInfoAPI(),
         weddingPlansAPI: WeddingPlansAPI(),
-
         feedBackAPI: FeedBackAPI()
-
     }
 
     return (

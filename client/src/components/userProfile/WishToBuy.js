@@ -8,7 +8,6 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import SideBarUser from './SideBarUser';
 import {Link} from 'react-router-dom'
-
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
@@ -45,29 +44,7 @@ function WishToBuy() {
             headers: {Authorization: token}
         })
     }
-
-     ////////////////// using this i can choose multiple quantity in one products /////////
-    // const increment = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity += 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
-
-    // const decrement = (id) =>{
-    //     cart.forEach(item => {
-    //         if(item._id === id){
-    //             item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
-    //         }
-    //     })
-
-    //     setCart([...cart])
-    //     addToCart(cart)
-    // }
+    
     ///////////// remove vendors /////////////
     const removeWishToBuy = id =>{
         if(window.confirm("Do you want to Remove this Vendor?")){
@@ -81,19 +58,6 @@ function WishToBuy() {
             addToWishToBuy(wish_to_buy)
         }
     }
-     /////////////////// about payment /////////////////
-    // const tranSuccess = async(payment) => {
-    //     const {paymentID, address} = payment;
-
-    //     await axios.post('/api/payment', {cart, paymentID, address}, {
-    //         headers: {Authorization: token}
-    //     })
-
-    //     setCart([])
-    //     addToCart([])
-    //     alert("You have successfully placed an order.")
-    // }
-
 
     if(wish_to_buy.length === 0) 
         return (<Content>
@@ -154,14 +118,7 @@ function WishToBuy() {
                     <Text4>{product.address_line_2}</Text4>
                     <Text4>{product.address_line_3}</Text4>
                     <LineLite1></LineLite1>
-                            {/* <Text1>If you would like to buy or getting more information about this service, please wait a moment. One of our employees will contact you as soon as possible by a mobile phone call. If you do not wish to purchase this service, remove it by clicking the Remove button at the top of this vendor's service. </Text1> */}
                             <h6>Prices can be changed. this price is minimum price of the {product.title}</h6>
-
-                            {/* <div className="amount">
-                                <button onClick={() => decrement(product._id)}> - </button>
-                                <span>{product.quantity}</span>
-                                <button onClick={() => increment(product._id)}> + </button>
-                            </div> */}
                             
                             <div className="delete" 
                             onClick={() => removeWishToBuy(product._id)}>
@@ -183,17 +140,6 @@ function WishToBuy() {
                 ))
             }
 
-            {/* <div className="total">
-                <br></br>
-                <h1>Total: Rs {total}</h1>
-                
-                <h5>Note: this is the minimum price of your cart</h5>
-                <br></br>
-                <PaypalButton
-                total={total}
-                tranSuccess={tranSuccess} />
-                <br></br>
-            </div> */}
         </div>
         </Container>
         <Footer/>
